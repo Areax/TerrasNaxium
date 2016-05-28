@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Harry Potter TCG (Unity)
 ========================
 
@@ -28,3 +29,7 @@ If you have no one to play with, you can test the game against yourself, to do s
 Basic functionality has been implemented and you should be able to complete a game against another player, you will probably notice that there aren't that many cards implemented, I have spent the past few months working on the infrastructure that will allow more complicated cards to be thrown into the random card pool, you can expect the card pool to grow substantially in the next few months as the more complicated features get built into the engine.
 
 Thanks for reading and enjoy the game! Feel free to drop me a message if you enjoy it.
+=======
+# TerrasNaxium
+Our little game
+>>>>>>> 6d59bc34192fd1178e812b41b56da8101fb1cf67

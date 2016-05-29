@@ -31,13 +31,13 @@ namespace HarryPotterUnity.Enums
 
     public enum LessonTypes
     {
-        Creatures, Charms, Transfiguration, Potions, Quidditch
+        Creatures, Demigods, Transfiguration, Potions, Quidditch
     }
 
 
     public enum ClassificationTypes
     {
-        CareOfMagicalCreatures, Charms, Transfiguration, Potions, Quidditch,
+        CareOfMagicalCreatures, Demigods, Transfiguration, Potions, Quidditch,
         Lesson,
         Character,
         Adventure
@@ -66,7 +66,7 @@ namespace HarryPotterUnity.Enums
             switch (type)
             {
                 case LessonTypes.Creatures: return ClassificationTypes.CareOfMagicalCreatures;
-                case LessonTypes.Charms: return ClassificationTypes.Charms;
+                case LessonTypes.Demigods: return ClassificationTypes.Demigods;
                 case LessonTypes.Transfiguration: return ClassificationTypes.Transfiguration;
                 case LessonTypes.Quidditch: return ClassificationTypes.Quidditch;
                 case LessonTypes.Potions: return ClassificationTypes.Potions;

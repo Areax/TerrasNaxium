@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using HarryPotterUnity.Enums;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     public class WizardCrackers : BaseSpell
     {

@@ -18,32 +18,32 @@ namespace HarryPotterUnity.UI
         private readonly LessonDescription _creatures = new LessonDescription
         {
             TextColor = new Color32(0xFF, 0x83, 0x00, 0xFF),
-            Title = "<b>Care of Magical Creatures</b>",
-            Style = "Style: <b>High & Consistent Damage</b>",
-            Description = "Crucial for almost every deck, Care of Magical Creatures allows you to play Creature cards, which provide a consistent damage source against your opponent once per turn."
+            Title = "<b>The Flood</b>",
+            Style = "Style: <b>12 cards, 12 points each</b>",
+            Description = "Low value creatures that tend to control the board."
         };
 
-        private readonly LessonDescription _charms = new LessonDescription
+        private readonly LessonDescription _demigods = new LessonDescription
         {
             TextColor = new Color32(0x30, 0x98, 0xFF, 0xFF),
-            Title = "<b>Charms</b>",
-            Style = "Style: <b>Low But Versatile Damage</b>",
-            Description = "Charms are spells with low damage that make up for it in versatility, charms have the ability to target creatures as well as your opponent, so they can be used for removal when you are in a pinch."
+            Title = "<b>Demigods</b>",
+            Style = "Style: <b>10 cards, 15 points each</b>",
+            Description = "Uses elements in order to establish value when vying for board control."
         };
 
         private readonly LessonDescription _transfiguration = new LessonDescription
         {
             TextColor = new Color32(0xF3, 0x20, 0x2D, 0xFF),
-            Title = "<b>Transfiguration</b>",
-            Style = "Style: <b>Card Removal / Defensive</b>",
-            Description = "Transfiguration spells provide various ways of card removal that help you control the board, however, transfiguration spells cannot damage your opponent directly, so they are purely defensive."
+            Title = "<b>High Intellects</b>",
+            Style = "Style: <b>8 cards, 18 points each</b>",
+            Description = "Must strategically use every card with utmost precision."
         };
 
         private readonly LessonDescription _potions = new LessonDescription
         {
             TextColor = new Color32(0x00, 0xC6, 0x1A, 0xFF),
             Title = "<b>Potions</b>",
-            Style = "Style: <b>Cheap & Powerful, But At A Cost</b>",
+            Style = "Style: <b>Null</b>",
             Description = "Potions contain very powerful spells that are cheap, versatile, and deal high damage, but they often require a lesson sacrifice."
         };
 
@@ -51,7 +51,7 @@ namespace HarryPotterUnity.UI
         {
             TextColor = new Color32(0xE8, 0xE8, 0x2E, 0xFF),
             Title = "<b>Quidditch</b>",
-            Style = "Style: <b>Dual Effects</b>",
+            Style = "Style: <b>Null</b>",
             Description = "Quidditch cards have a relatively high cost but often contain multiple effects, such as dealing damage to your opponent AND crippling their ability to play certain cards on their next turn."
         };
 
@@ -71,8 +71,8 @@ namespace HarryPotterUnity.UI
                 case LessonTypes.Creatures:
                     newDescription = _creatures;
                     break;
-                case LessonTypes.Charms:
-                    newDescription = _charms;
+                case LessonTypes.Demigods:
+                    newDescription = _demigods;
                     break;
                 case LessonTypes.Transfiguration:
                     newDescription = _transfiguration;

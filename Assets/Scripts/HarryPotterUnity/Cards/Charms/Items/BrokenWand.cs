@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using HarryPotterUnity.Cards.BasicBehavior;
 
-namespace HarryPotterUnity.Cards.Charms.Items
+namespace HarryPotterUnity.Cards.Demigods.Items
 {
     public class BrokenWand : ItemLessonProvider
     {

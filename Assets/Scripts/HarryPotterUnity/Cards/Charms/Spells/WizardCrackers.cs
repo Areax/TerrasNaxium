@@ -8,7 +8,7 @@ namespace HarryPotterUnity.Cards.Demigods.Spells
         protected override void SpellAction(List<BaseCard> targets)
         {
             var card = Player.Deck.TakeTopCard();
-
+               
             if (card.Type == Type.Lesson)
             {
                 Player.InPlay.Add(card);

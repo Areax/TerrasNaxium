@@ -89,6 +89,8 @@ namespace HarryPotterUnity.UI.Menu
         private Text _mainMenuTitle;
         private Image _mainMenuBackground;
 
+        private Image _gameBackground;
+
         protected override void Awake()
         {
             base.Awake();

@@ -24,13 +24,18 @@ namespace HarryPotterUnity.Game
         private const string LOBBY_VERSION = "v0.2-dev";
 
         private static readonly TypedLobby _defaultLobby = new TypedLobby(LOBBY_VERSION, LobbyType.Default);
+        private GameObject gameBackground;
 
         public void Awake()
         {
+            
             Log.Write("Initialize Log");
             
             _menuManager = FindObjectOfType<MenuManager>();
             _allMenuScreens = FindObjectsOfType<BaseMenu>().ToList();
+
+            gameBackground = GameObject.FindWithTag("GameBackground");
+            gameBackground.SetActive(false);
 
             GameManager.Network = photonView;
 
@@ -174,6 +179,9 @@ namespace HarryPotterUnity.Game
                 gameplayMenu.RemotePlayer = _player1.IsLocalPlayer ? _player2 : _player1;
 
                 _menuManager.ShowMenu(gameplayMenu);
+
+                gameBackground.SetActive(true);
+                Debug.Log("why");
             }
             else
             {

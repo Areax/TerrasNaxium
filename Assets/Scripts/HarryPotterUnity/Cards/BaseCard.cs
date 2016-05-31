@@ -12,19 +12,25 @@ using UnityEngine;
 using UnityLogWrapper;
 using Type = HarryPotterUnity.Enums.Type;
 
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 namespace HarryPotterUnity.Cards
 {
     [SelectionBase]
-    public abstract class BaseCard : MonoBehaviour
+    public abstract class BaseCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [Header("Deck Generation Options")]
-        [SerializeField, UsedImplicitly] private ClassificationTypes _classification;
-        [SerializeField, UsedImplicitly] private Rarity _rarity;
+        [SerializeField, UsedImplicitly]
+        private ClassificationTypes _classification;
+        [SerializeField, UsedImplicitly]
+        private Rarity _rarity;
 
         [Header("Card Settings")]
         [SerializeField, EnumFlags]
-        [UsedImplicitly] private Tag _tags; 
-        
+        [UsedImplicitly]
+        private Tag _tags;
+
         public State State { get; set; }
         public ClassificationTypes Classification { get { return _classification; } set { _classification = value; } }
 
@@ -32,11 +38,20 @@ namespace HarryPotterUnity.Cards
         protected abstract Type GetCardType();
 
         public FlipState FlipState { private get; set; }
-        public Rarity Rarity { get { return _rarity; }  set { _rarity = value; } }
+        public Rarity Rarity { get { return _rarity; } set { _rarity = value; } }
 
         public Player Player { get; set; }
 
-        private List<IDeckGenerationRequirement> _deckGenerationRequirements; 
+        //will return to where the card is put
+        public Transform parentToReturnTo = null;
+        public Transform placeholderParent = null;
+        GameObject placeholder = null;
+        public static bool moveable = true;
+
+
+
+
+        private List<IDeckGenerationRequirement> _deckGenerationRequirements;
         public List<IDeckGenerationRequirement> DeckGenerationRequirements
         {
             get
@@ -100,14 +115,14 @@ namespace HarryPotterUnity.Cards
         protected virtual void Start()
         {
             FlipState = FlipState.FaceDown;
-            
+
             gameObject.layer = GameManager.CARD_LAYER;
             _cardFace = transform.FindChild("Front").gameObject;
 
             AddCollider();
-            
+
             LoadPlayRequirements();
-            
+
             AddOutlineComponent();
             AddHighlightComponent();
         }
@@ -116,8 +131,8 @@ namespace HarryPotterUnity.Cards
         {
             var tmp = Resources.Load("Outline");
 
-            _outline = (GameObject) Instantiate(tmp);
-            _outline.transform.position = transform.position + Vector3.back*0.3f;
+            _outline = (GameObject)Instantiate(tmp);
+            _outline.transform.position = transform.position + Vector3.back * 0.3f;
             _outline.transform.parent = transform;
 
             _outline.SetActive(false);
@@ -130,7 +145,7 @@ namespace HarryPotterUnity.Cards
             _highlight = (GameObject)Instantiate(tmp);
             _highlight.transform.position = transform.position + Vector3.back * 0.2f;
             _highlight.transform.parent = transform;
-            
+
             _highlight.SetActive(false);
         }
 
@@ -157,12 +172,12 @@ namespace HarryPotterUnity.Cards
                 col.size = new Vector3(_colliderSize.x, _colliderSize.y, 0.2f);
             }
         }
-        
+
         public void OnMouseOver()
         {
             ShowPreview();
 
-            if ( (IsPlayableFromHand() || IsActivatable()) && GameManager.IsInputGathererActive == false)
+            if ((IsPlayableFromHand() || IsActivatable()) && GameManager.IsInputGathererActive == false)
             {
                 _outline.SetActive(true);
             }
@@ -179,9 +194,9 @@ namespace HarryPotterUnity.Cards
         {
             if (_outline.activeSelf == false) return; //Do not call OnMouseDown if cursor has left the object
 
-            if(GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
+            if (GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
 
-            if(IsActivatable())
+            if (IsActivatable())
             {
                 if (_inPlayActionInputRequired > 0)
                 {
@@ -202,24 +217,24 @@ namespace HarryPotterUnity.Cards
                 {
                     GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
                 }
-            }   
+            }
 
             _outline.SetActive(false);
         }
 
         private bool IsActivatable()
         {
-            return State == State.InPlay 
+            return State == State.InPlay
                    && Player.IsLocalPlayer
-                   && ((IPersistentCard) this).CanPerformInPlayAction()
+                   && ((IPersistentCard)this).CanPerformInPlayAction()
                    && GetInPlayActionTargets().Count >= _fromHandActionInputRequired;
         }
 
         private bool IsPlayableFromHand()
-        {            
+        {
             bool meetsPlayRequirements = PlayRequirements.Count == 0 ||
                                      PlayRequirements.All(req => req.MeetsRequirement());
-            
+
             return Player.IsLocalPlayer &&
                    State == State.InHand &&
                    Player.CanUseActions(ActionCost) &&
@@ -230,7 +245,7 @@ namespace HarryPotterUnity.Cards
 
         public bool HasTag(Tag t)
         {
-            return (_tags & t) == t;    
+            return (_tags & t) == t;
         }
 
         private bool IsUnique()
@@ -245,7 +260,7 @@ namespace HarryPotterUnity.Cards
         }
 
         public void PlayFromHand(List<BaseCard> targets = null)
-        {       
+        {
             foreach (var requirement in PlayRequirements)
             {
                 requirement.OnRequirementMet();
@@ -254,7 +269,7 @@ namespace HarryPotterUnity.Cards
             OnPlayFromHandAction(targets);
 
             Player.UseActions(ActionCost);
-            
+
         }
 
         protected virtual void OnPlayFromHandAction(List<BaseCard> targets)
@@ -268,16 +283,16 @@ namespace HarryPotterUnity.Cards
                 throw new Exception("OnPlayFromHandAction must be overriden in cards that do not implement IPersistentCard!");
             }
         }
-        
+
         private void ShowPreview()
         {
             _cardFace.layer = GameManager.PREVIEW_LAYER;
-            
+
             if (FlipState == FlipState.FaceUp && iTween.Count(gameObject) == 0)
                 GameManager.PreviewCamera.ShowPreview(this);
             else HidePreview();
         }
-    
+
         private void HidePreview()
         {
             _cardFace.layer = GameManager.CARD_LAYER;
@@ -335,7 +350,81 @@ namespace HarryPotterUnity.Cards
 
         public void RemoveHighlight()
         {
-            if(_highlight) _highlight.SetActive(false);
+            if (_highlight) _highlight.SetActive(false);
+        }
+
+
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+
+
+
+            if (moveable)
+            {
+                //placeholder is used for making sure the parent will have a "placeholder" object to come back to
+                placeholder = new GameObject();
+                placeholder.transform.SetParent(this.transform.parent);
+                LayoutElement le = placeholder.AddComponent<LayoutElement>();
+                le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
+                le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
+                le.flexibleWidth = 0;
+                le.flexibleHeight = 0;
+
+                //placeholder is now where the card left the area
+                placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
+
+                parentToReturnTo = this.transform.parent;
+                placeholderParent = parentToReturnTo;
+                this.transform.SetParent(this.transform.parent.parent);
+
+                GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (moveable)
+            {
+                this.transform.position = eventData.position;
+                //if the drop area has the empt component (Drop Zones)
+                if (placeholderParent.GetComponent<NaxDropZone>())
+                {
+                    //make sure the placeholder will only be placed if it's hovering over an empty drop area
+                    NaxDropZone script = placeholderParent.GetComponent<NaxDropZone>();
+                    if (placeholder.transform.parent != placeholderParent && script.empt == false)
+                        placeholder.transform.SetParent(placeholderParent);
+                }
+                //otherwise you're free to place the placeholder in the hand
+                else if (placeholder.transform.parent != placeholderParent)
+                    placeholder.transform.SetParent(placeholderParent);
+
+                int newSiblingIndex = placeholderParent.childCount;
+
+                for (int i = 0; i < placeholderParent.childCount; i++)
+                {
+                    if (this.transform.position.x < placeholderParent.GetChild(i).position.x)
+                    {
+                        newSiblingIndex = i;
+                        if (placeholder.transform.GetSiblingIndex() < newSiblingIndex)
+                            newSiblingIndex--;
+                        break;
+                    }
+                }
+                placeholder.transform.SetSiblingIndex(newSiblingIndex);
+            }
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (moveable)
+            {
+                this.transform.SetParent(parentToReturnTo);
+                GetComponent<CanvasGroup>().blocksRaycasts = true;
+                this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+                Destroy(placeholder);
+            }
         }
     }
+
 }

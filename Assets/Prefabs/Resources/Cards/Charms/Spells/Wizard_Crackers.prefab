@@ -47,6 +47,10 @@ GameObject:
   - 114: {fileID: 11409190}
   - 114: {fileID: 11461292}
   - 114: {fileID: 11485748}
+  - 114: {fileID: 11454112}
+  - 114: {fileID: 11434484}
+  - 114: {fileID: 11499700}
+  - 114: {fileID: 11485646}
   m_Layer: 10
   m_Name: Wizard_Crackers
   m_TagString: Untagged
@@ -60,9 +64,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124066}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 7}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 459550}
   m_RootOrder: 0
@@ -75,6 +80,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 426468}
   - {fileID: 467748}
@@ -86,9 +92,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149556}
-  m_LocalRotation: {x: -.00508591719, y: .70708847, z: -.70708853, w: .00508600241}
+  m_LocalRotation: {x: -0.005085917, y: 0.7070885, z: -0.70708853, w: 0.0050860024}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 7}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 459550}
   m_RootOrder: 1
@@ -110,8 +117,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -134,8 +143,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -191,9 +202,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _classification: 1
   _rarity: 0
-  _type: 2
-  Tags: 
-  _actionCost: 1
+  _tags: 0
+  parentToReturnTo: {fileID: 0}
+  placeholderParent: {fileID: 0}
+--- !u!114 &11434484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521257714fc9e437a9163df2d37f2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
+  Type: 
+  Method: 
+  easeType: 0
+  Time: 0
+  Delay: 0
+  loopType: 0
+  IsRunning: 0
+  IsPaused: 0
+  Name: 
+--- !u!114 &11454112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521257714fc9e437a9163df2d37f2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
+  Type: 
+  Method: 
+  easeType: 0
+  Time: 0
+  Delay: 0
+  loopType: 0
+  IsRunning: 0
+  IsPaused: 0
+  Name: 
 --- !u!114 &11461292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,6 +260,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _amountRequired: 1
   _lessonType: 1
+--- !u!114 &11485646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521257714fc9e437a9163df2d37f2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
+  Type: 
+  Method: 
+  easeType: 0
+  Time: 0
+  Delay: 0
+  loopType: 0
+  IsRunning: 0
+  IsPaused: 0
+  Name: 
 --- !u!114 &11485748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,6 +293,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumAmountAllowed: 2
+--- !u!114 &11499700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521257714fc9e437a9163df2d37f2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
+  Type: 
+  Method: 
+  easeType: 0
+  Time: 0
+  Delay: 0
+  loopType: 0
+  IsRunning: 0
+  IsPaused: 0
+  Name: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -180,7 +180,7 @@ namespace HarryPotterUnity.Game
 
                 _menuManager.ShowMenu(gameplayMenu);
 
-                gameBackground.SetActive(true);
+                //gameBackground.SetActive(true);
                 Debug.Log("why");
             }
             else
@@ -209,7 +209,7 @@ namespace HarryPotterUnity.Game
             GameManager.NetworkIdCounter = 0;
             GameManager.AllCards.Clear();
 
-            DeckGenerator.ResetStartingCharacterPool();
+            //DeckGenerator.ResetStartingCharacterPool();
 
             Log.Write("Generating Player Decks");
             _player1.InitDeck(p1SelectedLessons);
@@ -219,8 +219,8 @@ namespace HarryPotterUnity.Game
         private void BeginGame()
         {
             Log.Write("Game setup complete, starting match");
-            _player1.Deck.SpawnStartingCharacter();
-            _player2.Deck.SpawnStartingCharacter();
+            //_player1.Deck.SpawnStartingCharacter();
+            //_player2.Deck.SpawnStartingCharacter();
 
             //Shuffle after drawing the initial hand if debug mode is enabled
             if (GameManager.DebugModeEnabled == false)
@@ -229,14 +229,14 @@ namespace HarryPotterUnity.Game
                 _player2.Deck.Shuffle();
             }
             
-            _player1.DrawInitialHand();
-            _player2.DrawInitialHand();
+            //_player1.DrawInitialHand();
+            //_player2.DrawInitialHand();
 
-            if (GameManager.DebugModeEnabled)
+            /*if (GameManager.DebugModeEnabled)
             {
                 _player1.Deck.Shuffle();
                 _player2.Deck.Shuffle();
-            }
+            }*/
             _player1.BeginTurn();
         }
         

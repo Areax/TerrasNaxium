@@ -13,7 +13,7 @@ namespace HarryPotterUnity.Game
     {
         private Player _player;
 
-        private readonly Vector2 _playFieldOffset = new Vector2(-100f, -50f);
+        private readonly Vector2 _playFieldOffset = new Vector2(0f, 0f);
 
         public event Action<Player> OnHandIsOutOfCards;
 
@@ -50,10 +50,15 @@ namespace HarryPotterUnity.Game
         {
             //if highlight is set to true, find the highlighted card and move the position
             //call add function
-            if (active == true && BaseCard.highlighted == false)
+            if (active == true && BaseCard.highlighted == true)
             {
                 card = _player.Hand.FindHighlighted();
-                Add(card);
+                if(card != null)
+                {
+                    Debug.Log(card);
+                    Add(card);
+                }
+                
             }
         }
 
@@ -88,7 +93,7 @@ namespace HarryPotterUnity.Game
 
             card.transform.parent = transform;
 
-            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 16f);
+            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y, -16f);
             cardPos.z -= Cards.IndexOf(card) * 0.2f;
 
             var tween = new MoveTween

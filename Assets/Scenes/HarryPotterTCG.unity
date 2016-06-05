@@ -4592,17 +4592,13 @@ MonoBehaviour:
   - {fileID: 100000, guid: ea7b9519fc9be3e4dab09516bd46a3ed, type: 2}
   - {fileID: 179742, guid: 8edb7905759f2794296219a4cf68218d, type: 2}
   _player2Deck:
-  - {fileID: 163272, guid: cf614697aeb3c164aa848c9f0520d35e, type: 2}
+  - {fileID: 100000, guid: ea7b9519fc9be3e4dab09516bd46a3ed, type: 2}
   - {fileID: 166244, guid: 6141c5aae229585498764befa032616b, type: 2}
   - {fileID: 179742, guid: 8edb7905759f2794296219a4cf68218d, type: 2}
   - {fileID: 151274, guid: 7bfc1561061ee8542be7a4bceca9e2c7, type: 2}
   - {fileID: 151274, guid: 7bfc1561061ee8542be7a4bceca9e2c7, type: 2}
   - {fileID: 118722, guid: 5869fb7eedfec63448d88752caa34328, type: 2}
   - {fileID: 187748, guid: 06e39efbe29a8df4496121936ec30ea5, type: 2}
-  _player1StartingCharacter: {fileID: 184820, guid: a8479b8a98571eb48abb56ff9288436f,
-    type: 2}
-  _player2StartingCharacter: {fileID: 101178, guid: 48e1bf03ab3152e4480b0cc85367d3b1,
-    type: 2}
 --- !u!4 &1413583626
 Transform:
   m_ObjectHideFlags: 0

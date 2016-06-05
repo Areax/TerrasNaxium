@@ -179,7 +179,7 @@ namespace HarryPotterUnity.Cards
         }
 
         private bool stillOnCard = false;
-        private static bool highlighted = false;
+        public static bool highlighted = false;
 
         public void OnMouseOver()
         {
@@ -189,6 +189,11 @@ namespace HarryPotterUnity.Cards
         public void OnMouseExit()
         {
             stillOnCard = false;
+        }
+
+        public bool isHighlight()
+        {
+            return _outline.activeSelf ? true : false;
         }
 
         public void OnMouseUp()

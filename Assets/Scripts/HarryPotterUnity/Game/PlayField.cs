@@ -17,6 +17,8 @@ namespace HarryPotterUnity.Game
 
         public event Action<Player> OnHandIsOutOfCards;
 
+        public BaseCard card;
+
         private void OnDestroy()
         {
             OnHandIsOutOfCards = null;
@@ -46,18 +48,28 @@ namespace HarryPotterUnity.Game
 
         private void OnMouseUp()
         {
-           //if highlight is set to true, find the highlighted card and move the position
-           //call add function
+            //if highlight is set to true, find the highlighted card and move the position
+            //call add function
+            if (active == true && BaseCard.highlighted == false)
+            {
+                card = _player.Hand.FindHighlighted();
+                Add(card);
+            }
         }
+
+        private bool active = false;
+
 
         private void OnMouseOver()
         {
             //set variable to be true
+            active = true;
         }
 
         private void OnMouseExit()
         {
             //set variable to be false
+            active = false;
         }
         
         protected override void Remove(BaseCard card)
@@ -91,20 +103,17 @@ namespace HarryPotterUnity.Game
 
             GameManager.TweenQueue.AddTweenToQueue(tween);
         }
-        
-        private Vector3 GetTargetPositionForCard(BaseCard card)
+
+        public override void AddAll(IEnumerable<BaseCard> cards)
         {
-            if (!Cards.Contains(card))
-            {
-                Log.Write("Card not found in CardCollection");
-                return card.transform.localPosition;
-            }
+            //adds all cards??
+            throw new NotImplementedException();
+        }
 
-            int index = Cards.IndexOf(card);
-            var result = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 16f);
-            result += index * Vector3.back * 0.2f;
-
-            return result;
+        protected override void RemoveAll(IEnumerable<BaseCard> cards)
+        {
+            //remove all cards from the field??
+            throw new NotImplementedException();
         }
     }
 }

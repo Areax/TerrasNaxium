@@ -110,6 +110,15 @@ namespace HarryPotterUnity.Game
             RemoveAll(new[] { card });
         }
 
+       public BaseCard FindHighlighted()
+        {
+            foreach(var card in Cards)
+            {
+                if (card.isHighlight())
+                    return card;
+            }
+            return null;
+        }
 
 
         public void AdjustHandSpacing()

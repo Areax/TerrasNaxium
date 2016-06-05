@@ -13,7 +13,7 @@ namespace HarryPotterUnity.Game
     {
         private Player _player;
 
-        private readonly Vector2 _deckPositionOffset = new Vector2(-355f, -124f);
+        private readonly Vector2 _playFieldOffset = new Vector2(-355f, -124f);
         
         public BaseCard StartingCharacter { get; private set; }
 
@@ -31,7 +31,7 @@ namespace HarryPotterUnity.Game
             var col = gameObject.AddComponent<BoxCollider>();
             col.isTrigger = true;
             col.size = new Vector3(50f, 70f, 1f);
-            col.center = new Vector3(_deckPositionOffset.x, _deckPositionOffset.y, 0f);
+            col.center = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 0f);
         }
 
         public void Initialize (IEnumerable<BaseCard> cardList, BaseCard startingCharacter)
@@ -39,7 +39,7 @@ namespace HarryPotterUnity.Game
             Cards = new List<BaseCard>(cardList);
             StartingCharacter = startingCharacter;
             
-            var cardPos = new Vector3(_deckPositionOffset.x, _deckPositionOffset.y);
+            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y);
             
             for (int i = 0; i < Cards.Count; i++)
             {
@@ -171,7 +171,7 @@ namespace HarryPotterUnity.Game
 
             card.transform.parent = transform;
 
-            var cardPos = new Vector3(_deckPositionOffset.x, _deckPositionOffset.y, 16f);
+            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 16f);
             cardPos.z -= Cards.IndexOf(card) * 0.2f;
 
             var tween = new MoveTween
@@ -229,7 +229,7 @@ namespace HarryPotterUnity.Game
             }
 
             int index = Cards.IndexOf(card);
-            var result = new Vector3(_deckPositionOffset.x, _deckPositionOffset.y, 16f);
+            var result = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 16f);
             result += index * Vector3.back * 0.2f;
 
             return result;

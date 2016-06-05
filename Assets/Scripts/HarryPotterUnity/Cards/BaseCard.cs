@@ -150,7 +150,7 @@ namespace HarryPotterUnity.Cards
 
         private void AddDraggingComponent()
         {
-            gameObject.AddComponent<NaxDraggable>();
+            gameObject.AddComponent<NaxClick>();
         }
 
 
@@ -178,52 +178,45 @@ namespace HarryPotterUnity.Cards
             }
         }
 
+        private bool stillOnCard = false;
+        private static bool highlighted = false;
+
         public void OnMouseOver()
         {
-            _outline.SetActive(true);
-
-            if ((IsPlayableFromHand() || IsActivatable()) && GameManager.IsInputGathererActive == false)
-            {
-                _outline.SetActive(true);
-            }
-
+            stillOnCard = true;
         }
 
         public void OnMouseExit()
         {
-            _outline.SetActive(false);
+            stillOnCard = false;
         }
 
         public void OnMouseUp()
         {
-            if (_outline.activeSelf == false) return; //Do not call OnMouseDown if cursor has left the object
+            Debug.Log("moused up!");
+            if (stillOnCard == false) return; //Do not call OnMouseDown if cursor has left the object
+            
 
             if (GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
+            if (highlighted == true && _outline.activeSelf == false)
+            {
+                return;
+            }
+            if (_outline.activeSelf == true)
+            {
+                //_inputGatherer.GatherInput(InputGatherMode.FromHandAction);
 
-            if (IsActivatable())
-            {
-                if (_inPlayActionInputRequired > 0)
-                {
-                    _inputGatherer.GatherInput(InputGatherMode.InPlayAction);
-                }
-                else
-                {
-                    GameManager.Network.RPC("ExecuteInPlayActionById", PhotonTargets.All, NetworkId);
-                }
+                //if true, move to specific location, indicated by card, set parent
+                _outline.SetActive(false);
+                highlighted = false;
             }
-            else if (true)//IsPlayableFromHand())
+            else
             {
-                if (_fromHandActionInputRequired > 0)
-                {
-                    _inputGatherer.GatherInput(InputGatherMode.FromHandAction);
-                }
-                else
-                {
-                    GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
-                }
+                _outline.SetActive(true);
+                highlighted = true;
+                //GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
             }
-            Debug.Log("cannot play");
-            _outline.SetActive(false);
+
         }
 
         private bool IsActivatable()

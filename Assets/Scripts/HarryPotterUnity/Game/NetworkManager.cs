@@ -222,12 +222,12 @@ namespace HarryPotterUnity.Game
             //_player1.Deck.SpawnStartingCharacter();
             //_player2.Deck.SpawnStartingCharacter();
 
-            //Shuffle after drawing the initial hand if debug mode is enabled
+            /*Shuffle after drawing the initial hand if debug mode is enabled
             if (GameManager.DebugModeEnabled == false)
             {
                 _player1.Deck.Shuffle();
                 _player2.Deck.Shuffle();
-            }
+            }*/
             
             //_player1.DrawInitialHand();
             //_player2.DrawInitialHand();

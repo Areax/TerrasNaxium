@@ -19,6 +19,7 @@ namespace HarryPotterUnity.Game
         public Deck Deck { get; private set; }
         public InPlay InPlay { get; private set; }
         public Discard Discard { get; private set; }
+        public PlayField PlayField { get; private set; }
 
         public List<BaseCard> AllCards
         {

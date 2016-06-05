@@ -4,7 +4,7 @@ using HarryPotterUnity.Cards.Interfaces;
 using HarryPotterUnity.Cards.PlayRequirements;
 using UnityEngine;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     [RequireComponent(typeof(InputRequirement))]
     public class StreamOfFlames : BaseSpell, IDamageSpell

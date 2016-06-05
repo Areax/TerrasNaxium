@@ -4,7 +4,7 @@ using HarryPotterUnity.Enums;
 using HarryPotterUnity.Game;
 using HarryPotterUnity.Tween;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     public class OutOfTheWoods : BaseSpell
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using HarryPotterUnity.Cards.PlayRequirements;
 using UnityEngine;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     [RequireComponent(typeof(InputRequirement))]
     public class HoverCharm : BaseSpell

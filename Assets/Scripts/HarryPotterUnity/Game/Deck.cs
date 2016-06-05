@@ -88,11 +88,6 @@ namespace HarryPotterUnity.Game
                 card.RemoveHighlight();
             }
 
-            if (Cards.Count <= 0)
-            {
-                GameOver();
-            }
-            
             return card;
         }
         

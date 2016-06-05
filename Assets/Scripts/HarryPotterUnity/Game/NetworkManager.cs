@@ -24,13 +24,18 @@ namespace HarryPotterUnity.Game
         private const string LOBBY_VERSION = "v0.2-dev";
 
         private static readonly TypedLobby _defaultLobby = new TypedLobby(LOBBY_VERSION, LobbyType.Default);
+        private GameObject gameBackground;
 
         public void Awake()
         {
+            
             Log.Write("Initialize Log");
             
             _menuManager = FindObjectOfType<MenuManager>();
             _allMenuScreens = FindObjectsOfType<BaseMenu>().ToList();
+
+            gameBackground = GameObject.FindWithTag("GameBackground");
+            gameBackground.SetActive(false);
 
             GameManager.Network = photonView;
 
@@ -174,6 +179,9 @@ namespace HarryPotterUnity.Game
                 gameplayMenu.RemotePlayer = _player1.IsLocalPlayer ? _player2 : _player1;
 
                 _menuManager.ShowMenu(gameplayMenu);
+
+                //gameBackground.SetActive(true);
+                Debug.Log("why");
             }
             else
             {
@@ -201,7 +209,7 @@ namespace HarryPotterUnity.Game
             GameManager.NetworkIdCounter = 0;
             GameManager.AllCards.Clear();
 
-            DeckGenerator.ResetStartingCharacterPool();
+            //DeckGenerator.ResetStartingCharacterPool();
 
             Log.Write("Generating Player Decks");
             _player1.InitDeck(p1SelectedLessons);
@@ -211,24 +219,24 @@ namespace HarryPotterUnity.Game
         private void BeginGame()
         {
             Log.Write("Game setup complete, starting match");
-            _player1.Deck.SpawnStartingCharacter();
-            _player2.Deck.SpawnStartingCharacter();
+            //_player1.Deck.SpawnStartingCharacter();
+            //_player2.Deck.SpawnStartingCharacter();
 
-            //Shuffle after drawing the initial hand if debug mode is enabled
+            /*Shuffle after drawing the initial hand if debug mode is enabled
             if (GameManager.DebugModeEnabled == false)
             {
                 _player1.Deck.Shuffle();
                 _player2.Deck.Shuffle();
-            }
+            }*/
             
-            _player1.DrawInitialHand();
-            _player2.DrawInitialHand();
+            //_player1.DrawInitialHand();
+            //_player2.DrawInitialHand();
 
-            if (GameManager.DebugModeEnabled)
+            /*if (GameManager.DebugModeEnabled)
             {
                 _player1.Deck.Shuffle();
                 _player2.Deck.Shuffle();
-            }
+            }*/
             _player1.BeginTurn();
         }
         

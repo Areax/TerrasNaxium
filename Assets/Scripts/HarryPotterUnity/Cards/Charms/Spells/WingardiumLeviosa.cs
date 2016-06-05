@@ -2,7 +2,7 @@
 using System.Linq;
 using HarryPotterUnity.Enums;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     public class WingardiumLeviosa : BaseSpell
     {

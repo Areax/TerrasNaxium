@@ -75,31 +75,13 @@ namespace HarryPotterUnity.DeckGeneration
 
         public static List<BaseCard> GenerateDeck(List<LessonTypes> types)
         {
+            Debug.Log("Trying to generate Deck");
             var deck = new List<BaseCard>();
 
-            switch (types.Count)
-            {
-                case 2:
-                    AddLessonsToDeck(ref deck, types[0], 13);
-                    AddLessonsToDeck(ref deck, types[1], 10);
+            AddLessonsToDeck(ref deck, types[0], 23);
 
-                    AddSupportCharacters(ref deck, 1);
-                    AddCardsToDeck(ref deck, types[0].ToClassification(), 19);
-                    AddCardsToDeck(ref deck, types[1].ToClassification(), 17);
-                    break;
-                case 3:
-                    AddLessonsToDeck(ref deck, types[0], 12);
-                    AddLessonsToDeck(ref deck, types[1], 6);
-                    AddLessonsToDeck(ref deck, types[2], 5);
-
-                    AddSupportCharacters(ref deck, 1);
-                    AddCardsToDeck(ref deck, types[0].ToClassification(), 12);
-                    AddCardsToDeck(ref deck, types[1].ToClassification(), 12);                   
-                    AddCardsToDeck(ref deck, types[2].ToClassification(), 12);
-                    break;
-                default:
-                    throw new Exception(types.Count + " type(s) sent to GenerateDeck, unsupported");
-            }
+            AddSupportCharacters(ref deck, 1);
+            AddCardsToDeck(ref deck, types[0].ToClassification(), 36);
 
             if (deck.Count != 60)
             {
@@ -112,29 +94,10 @@ namespace HarryPotterUnity.DeckGeneration
         {
             var deck = new List<BaseCard>();
 
-            switch (types.Count)
-            {
-                case 2:
-                    AddLessonsToDeck(ref deck, types[0], 13);
-                    AddLessonsToDeck(ref deck, types[1], 10);
+            AddLessonsToDeck(ref deck, types[0], 23);
+            AddSupportCharacters(ref deck, 1);
+            AddCardsToDeck(ref deck, types[0].ToClassification(), 36 - (prebuiltDeck.Count / 2));
 
-                    AddSupportCharacters(ref deck, 1);
-                    AddCardsToDeck(ref deck, types[0].ToClassification(), 19 - (prebuiltDeck.Count / 2));
-                    AddCardsToDeck(ref deck, types[1].ToClassification(), 17 - (prebuiltDeck.Count / 2));
-                    break;
-                case 3:
-                    AddLessonsToDeck(ref deck, types[0], 12);
-                    AddLessonsToDeck(ref deck, types[1], 6);
-                    AddLessonsToDeck(ref deck, types[2], 5);
-
-                    AddSupportCharacters(ref deck, 1);
-                    AddCardsToDeck(ref deck, types[0].ToClassification(), 12 - (prebuiltDeck.Count / 3));
-                    AddCardsToDeck(ref deck, types[1].ToClassification(), 12 - (prebuiltDeck.Count / 3));
-                    AddCardsToDeck(ref deck, types[2].ToClassification(), 12 - (prebuiltDeck.Count / 3));
-                    break;
-                default:
-                    throw new Exception(types.Count + " type(s) sent to GenerateDeck, unsupported");
-            }
 
             if (deck.Count != 60)
             {

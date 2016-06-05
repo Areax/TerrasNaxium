@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     public class Obliviate : BaseSpell
     {

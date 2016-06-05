@@ -1,4 +1,4 @@
-﻿namespace HarryPotterUnity.Cards.Charms.Locations
+﻿namespace HarryPotterUnity.Cards.Demigods.Locations
 {
     public class Gringotts : BaseLocation
     {

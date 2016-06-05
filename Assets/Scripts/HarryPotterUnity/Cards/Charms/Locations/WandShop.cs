@@ -3,7 +3,7 @@ using System.Linq;
 using HarryPotterUnity.Enums;
 using HarryPotterUnity.Utils;
 
-namespace HarryPotterUnity.Cards.Charms.Locations
+namespace HarryPotterUnity.Cards.Demigods.Locations
 {
     public class WandShop : BaseLocation
     {
@@ -12,8 +12,8 @@ namespace HarryPotterUnity.Cards.Charms.Locations
         {
             get
             {
-                return Player.InPlay.LessonsOfType(LessonTypes.Charms)
-                    .Concat(Player.OppositePlayer.InPlay.LessonsOfType(LessonTypes.Charms))
+                return Player.InPlay.LessonsOfType(LessonTypes.Demigods)
+                    .Concat(Player.OppositePlayer.InPlay.LessonsOfType(LessonTypes.Demigods))
                     .Cast<BaseLesson>();
             }
         }
@@ -45,7 +45,7 @@ namespace HarryPotterUnity.Cards.Charms.Locations
         {
             var lesson = card as BaseLesson;
 
-            if (lesson != null && lesson.LessonType == LessonTypes.Charms)
+            if (lesson != null && lesson.LessonType == LessonTypes.Demigods)
             {
                 lesson.AmountLessonsProvided = 2;
             }

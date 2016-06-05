@@ -12,19 +12,25 @@ using UnityEngine;
 using UnityLogWrapper;
 using Type = HarryPotterUnity.Enums.Type;
 
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 namespace HarryPotterUnity.Cards
 {
     [SelectionBase]
     public abstract class BaseCard : MonoBehaviour
     {
         [Header("Deck Generation Options")]
-        [SerializeField, UsedImplicitly] private ClassificationTypes _classification;
-        [SerializeField, UsedImplicitly] private Rarity _rarity;
+        [SerializeField, UsedImplicitly]
+        private ClassificationTypes _classification;
+        [SerializeField, UsedImplicitly]
+        private Rarity _rarity;
 
         [Header("Card Settings")]
         [SerializeField, EnumFlags]
-        [UsedImplicitly] private Tag _tags; 
-        
+        [UsedImplicitly]
+        private Tag _tags;
+
         public State State { get; set; }
         public ClassificationTypes Classification { get { return _classification; } set { _classification = value; } }
 
@@ -32,11 +38,18 @@ namespace HarryPotterUnity.Cards
         protected abstract Type GetCardType();
 
         public FlipState FlipState { private get; set; }
-        public Rarity Rarity { get { return _rarity; }  set { _rarity = value; } }
+        public Rarity Rarity { get { return _rarity; } set { _rarity = value; } }
 
         public Player Player { get; set; }
 
-        private List<IDeckGenerationRequirement> _deckGenerationRequirements; 
+        //will return to where the card is put
+        public Transform parentToReturnTo = null;
+        public Transform placeholderParent = null;
+        GameObject placeholder = null;
+        public static bool moveable = true;
+
+
+        private List<IDeckGenerationRequirement> _deckGenerationRequirements;
         public List<IDeckGenerationRequirement> DeckGenerationRequirements
         {
             get
@@ -100,24 +113,25 @@ namespace HarryPotterUnity.Cards
         protected virtual void Start()
         {
             FlipState = FlipState.FaceDown;
-            
+
             gameObject.layer = GameManager.CARD_LAYER;
             _cardFace = transform.FindChild("Front").gameObject;
 
             AddCollider();
-            
+
             LoadPlayRequirements();
-            
+
             AddOutlineComponent();
             AddHighlightComponent();
+            AddDraggingComponent();
         }
 
         private void AddOutlineComponent()
         {
             var tmp = Resources.Load("Outline");
 
-            _outline = (GameObject) Instantiate(tmp);
-            _outline.transform.position = transform.position + Vector3.back*0.3f;
+            _outline = (GameObject)Instantiate(tmp);
+            _outline.transform.position = transform.position + Vector3.back * 0.3f;
             _outline.transform.parent = transform;
 
             _outline.SetActive(false);
@@ -130,9 +144,15 @@ namespace HarryPotterUnity.Cards
             _highlight = (GameObject)Instantiate(tmp);
             _highlight.transform.position = transform.position + Vector3.back * 0.2f;
             _highlight.transform.parent = transform;
-            
+
             _highlight.SetActive(false);
         }
+
+        private void AddDraggingComponent()
+        {
+            gameObject.AddComponent<NaxClick>();
+        }
+
 
         private void LoadPlayRequirements()
         {
@@ -157,69 +177,61 @@ namespace HarryPotterUnity.Cards
                 col.size = new Vector3(_colliderSize.x, _colliderSize.y, 0.2f);
             }
         }
-        
+
+        private bool stillOnCard = false;
+        private static bool highlighted = false;
+
         public void OnMouseOver()
         {
-            ShowPreview();
-
-            if ( (IsPlayableFromHand() || IsActivatable()) && GameManager.IsInputGathererActive == false)
-            {
-                _outline.SetActive(true);
-            }
-
+            stillOnCard = true;
         }
 
         public void OnMouseExit()
         {
-            HidePreview();
-            _outline.SetActive(false);
+            stillOnCard = false;
         }
 
         public void OnMouseUp()
         {
-            if (_outline.activeSelf == false) return; //Do not call OnMouseDown if cursor has left the object
+            Debug.Log("moused up!");
+            if (stillOnCard == false) return; //Do not call OnMouseDown if cursor has left the object
+            
 
-            if(GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
-
-            if(IsActivatable())
+            if (GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
+            if (highlighted == true && _outline.activeSelf == false)
             {
-                if (_inPlayActionInputRequired > 0)
-                {
-                    _inputGatherer.GatherInput(InputGatherMode.InPlayAction);
-                }
-                else
-                {
-                    GameManager.Network.RPC("ExecuteInPlayActionById", PhotonTargets.All, NetworkId);
-                }
+                return;
             }
-            else if (IsPlayableFromHand())
+            if (_outline.activeSelf == true)
             {
-                if (_fromHandActionInputRequired > 0)
-                {
-                    _inputGatherer.GatherInput(InputGatherMode.FromHandAction);
-                }
-                else
-                {
-                    GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
-                }
-            }   
+                //_inputGatherer.GatherInput(InputGatherMode.FromHandAction);
 
-            _outline.SetActive(false);
+                //if true, move to specific location, indicated by card, set parent
+                _outline.SetActive(false);
+                highlighted = false;
+            }
+            else
+            {
+                _outline.SetActive(true);
+                highlighted = true;
+                //GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
+            }
+
         }
 
         private bool IsActivatable()
         {
-            return State == State.InPlay 
+            return State == State.InPlay
                    && Player.IsLocalPlayer
-                   && ((IPersistentCard) this).CanPerformInPlayAction()
+                   && ((IPersistentCard)this).CanPerformInPlayAction()
                    && GetInPlayActionTargets().Count >= _fromHandActionInputRequired;
         }
 
         private bool IsPlayableFromHand()
-        {            
+        {
             bool meetsPlayRequirements = PlayRequirements.Count == 0 ||
                                      PlayRequirements.All(req => req.MeetsRequirement());
-            
+
             return Player.IsLocalPlayer &&
                    State == State.InHand &&
                    Player.CanUseActions(ActionCost) &&
@@ -230,7 +242,7 @@ namespace HarryPotterUnity.Cards
 
         public bool HasTag(Tag t)
         {
-            return (_tags & t) == t;    
+            return (_tags & t) == t;
         }
 
         private bool IsUnique()
@@ -245,7 +257,7 @@ namespace HarryPotterUnity.Cards
         }
 
         public void PlayFromHand(List<BaseCard> targets = null)
-        {       
+        {
             foreach (var requirement in PlayRequirements)
             {
                 requirement.OnRequirementMet();
@@ -254,7 +266,7 @@ namespace HarryPotterUnity.Cards
             OnPlayFromHandAction(targets);
 
             Player.UseActions(ActionCost);
-            
+
         }
 
         protected virtual void OnPlayFromHandAction(List<BaseCard> targets)
@@ -268,16 +280,16 @@ namespace HarryPotterUnity.Cards
                 throw new Exception("OnPlayFromHandAction must be overriden in cards that do not implement IPersistentCard!");
             }
         }
-        
+
         private void ShowPreview()
         {
             _cardFace.layer = GameManager.PREVIEW_LAYER;
-            
+
             if (FlipState == FlipState.FaceUp && iTween.Count(gameObject) == 0)
                 GameManager.PreviewCamera.ShowPreview(this);
             else HidePreview();
         }
-    
+
         private void HidePreview()
         {
             _cardFace.layer = GameManager.CARD_LAYER;
@@ -335,7 +347,9 @@ namespace HarryPotterUnity.Cards
 
         public void RemoveHighlight()
         {
-            if(_highlight) _highlight.SetActive(false);
+            if (_highlight) _highlight.SetActive(false);
         }
+
     }
+
 }

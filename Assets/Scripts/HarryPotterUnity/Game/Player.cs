@@ -19,6 +19,7 @@ namespace HarryPotterUnity.Game
         public Deck Deck { get; private set; }
         public InPlay InPlay { get; private set; }
         public Discard Discard { get; private set; }
+        public PlayField PlayField { get; private set; }
 
         public List<BaseCard> AllCards
         {
@@ -64,6 +65,8 @@ namespace HarryPotterUnity.Game
         public event CardPlayedEvent OnCardPlayed;
         public event DamageTakenEvent OnDamageTaken;
 
+        private List<BaseCard> prebuiltCards;
+
         public void OnDestroy()
         {
             OnNextTurnStart = null;
@@ -78,23 +81,30 @@ namespace HarryPotterUnity.Game
             ActionsAvailable = 0;
 
             Hand = transform.GetComponentInChildren<Hand>();
+            Hand.gameObject.AddComponent<NaxHand>();
             Deck = transform.GetComponentInChildren<Deck>();
             InPlay = transform.GetComponentInChildren<InPlay>();
             Discard = transform.GetComponentInChildren<Discard>();
 
             TypeImmunity = new HashSet<Type>();
+
+            
+            
         }
 
         public void InitDeck(List<LessonTypes> selectedLessons)
         {
+            prebuiltCards = GameManager.GetPlayerTestDeck(NetworkId);
+            Debug.Log(prebuiltCards.ToString());
             List<BaseCard> cards;
             BaseCard startingCharacter;
 
             if (GameManager.DebugModeEnabled)
             {
-                var prebuiltCards = GameManager.GetPlayerTestDeck(NetworkId);
-                cards = DeckGenerator.GenerateDeck(prebuiltCards, selectedLessons);
-                startingCharacter = GameManager.GetPlayerTestCharacter(NetworkId);
+                DrawInitialHand();
+                //cards = DeckGenerator.GenerateDeck(selectedLessons);
+                //cards = DeckGenerator.GenerateDeck(prebuiltCards, selectedLessons);
+                //startingCharacter = GameManager.GetPlayerTestCharacter(NetworkId);
             }
             else
             {
@@ -102,7 +112,7 @@ namespace HarryPotterUnity.Game
                 startingCharacter = DeckGenerator.GetRandomCharacter();
             }
 
-            Deck.Initialize( cards, startingCharacter);
+            //Deck.Initialize( cards, startingCharacter);
         }
 
         /// <summary>
@@ -146,7 +156,7 @@ namespace HarryPotterUnity.Game
                 card.OnInPlayBeforeTurnAction();
             }
 
-            Deck.DrawCard();
+            //Deck.DrawCard();
             AddActions(2);
 
             if (ActionsAvailable < 1)
@@ -182,13 +192,19 @@ namespace HarryPotterUnity.Game
             return ActionsAvailable >= amount;
         }
 
+
+
         public void DrawInitialHand()
         {
-            for (int i = 0; i < 7; i++)
+            Hand.Initialize(prebuiltCards);
+            /*for (int i = 0; i < 7; i++)
             {
-                var card = Deck.TakeTopCard();
+                //var card = Deck.TakeTopCard();
+                var card = prebuiltCards[i];
+
+
                 Hand.Add(card, preview: false, adjustSpacing: false);
-            }       
+            }*/       
         }
         
         public void TakeDamage(BaseCard sourceCard, int amount)

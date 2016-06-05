@@ -2,7 +2,7 @@
 using System.Linq;
 using HarryPotterUnity.Cards.Interfaces;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     public class Fumos : BaseSpell, IDamageSpell
     {

@@ -4,7 +4,7 @@ using HarryPotterUnity.Game;
 using HarryPotterUnity.Tween;
 using HarryPotterUnity.Enums;
 
-namespace HarryPotterUnity.Cards.Charms.Spells
+namespace HarryPotterUnity.Cards.Demigods.Spells
 {
     public class AntiCheatingSpell : BaseSpell
     {

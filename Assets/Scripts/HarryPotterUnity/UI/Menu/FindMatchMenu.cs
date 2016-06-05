@@ -42,7 +42,7 @@ namespace HarryPotterUnity.UI.Menu
         {
             var selectedLessons = GetSelectedLessons();
             
-            if (selectedLessons.Count == 2 || selectedLessons.Count == 3)
+            if (selectedLessons.Count == 1 && selectedLessons[0] == LessonTypes.Demigods)
             {
                 var lessonBytes = selectedLessons.Select(n => (byte)n).ToArray();
 
@@ -59,7 +59,7 @@ namespace HarryPotterUnity.UI.Menu
             else
             {
                 _errorPanel.Title = "Error!";
-                _errorPanel.Message = "You must choose two or three lesson types to enter matchmaking!";
+                _errorPanel.Message = "You must choose the Demigods class only.";
                 _subMenuManager.ShowMenu(_errorPanel);
             }
         }

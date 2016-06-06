@@ -198,6 +198,7 @@ namespace HarryPotterUnity.Cards
 
         public void OnMouseUp()
         {
+            
             Debug.Log("moused up!");
             if (stillOnCard == false) return; //Do not call OnMouseDown if cursor has left the object
             
@@ -205,6 +206,8 @@ namespace HarryPotterUnity.Cards
             if (GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
             if (highlighted == true && _outline.activeSelf == false)
             {
+         //       GameManager.AllCards.SetActive(false);
+           //     _outline.SetActive(true);
                 return;
             }
             if (_outline.activeSelf == true)

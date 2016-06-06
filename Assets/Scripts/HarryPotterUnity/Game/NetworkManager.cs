@@ -181,7 +181,6 @@ namespace HarryPotterUnity.Game
                 _menuManager.ShowMenu(gameplayMenu);
 
                 //gameBackground.SetActive(true);
-                Debug.Log("why");
             }
             else
             {
@@ -278,15 +277,6 @@ namespace HarryPotterUnity.Game
             persistentCard.OnInPlayAction();
         }
 
-        [PunRPC, UsedImplicitly]
-        public void ExecuteDrawActionOnPlayer(byte id)
-        {
-            var player = id == 0 ? _player1 : _player2;
-
-            Log.Write("Player {0} Draws a Card", player.NetworkId + 1);
-            player.Deck.DrawCard();
-            player.UseActions();
-        }
 
         [PunRPC, UsedImplicitly]
         public void ExecuteInputCardById(byte id, params byte[] selectedCardIds)

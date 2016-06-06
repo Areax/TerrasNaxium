@@ -4,20 +4,33 @@ using HarryPotterUnity.Cards;
 using HarryPotterUnity.Enums;
 using HarryPotterUnity.Tween;
 using UnityEngine;
+using System.Linq;
 using UnityLogWrapper;
 using Random = UnityEngine.Random;
 
 namespace HarryPotterUnity.Game
 {
-    public class PlayField: CardCollection
+    public class PlayField: MonoBehaviour
     {
         private Player _player;
 
-        private readonly Vector2 _playFieldOffset = new Vector2(-100f, -50f);
+        private readonly Vector2 _playFieldOffset = new Vector2(100f, 0f);
+        //TL = top left, BR = bottom right, TM = top middle
+        private readonly Vector2 _playPieceTL = new Vector2(100f, 0f);
+        private readonly Vector2 _playPieceTM = new Vector2(100f, 0f);
+        private readonly Vector2 _playPieceTR = new Vector2(100f, 0f);
+        private readonly Vector2 _playPieceBL = new Vector2(100f, 0f);
+        private readonly Vector2 _playPieceBM = new Vector2(100f, 0f);
+        private readonly Vector2 _playPieceBR = new Vector2(100f, 0f);
+
+        private GameObject TL;
+        private PlayPiece TM;
+        private PlayPiece TR;
+        private PlayPiece BL;
+        private PlayPiece BM;
+        private PlayPiece BR;
 
         public event Action<Player> OnHandIsOutOfCards;
-
-        public BaseCard card;
 
         private void OnDestroy()
         {
@@ -31,86 +44,44 @@ namespace HarryPotterUnity.Game
             col.isTrigger = true;
             col.size = new Vector3(50f, 70f, 1f);
             col.center = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 0f);
+            //create 6 PlayPieces
+            TL = createPiece(_playPieceTL);
+        }
+        private GameObject Instance = Resources.Load("AlbusDumbledore") as GameObject;
+
+        private GameObject createPiece(Vector2 area)
+        {
+            var inst = Instantiate(Instance);
+            var instpp = inst.AddComponent<PlayPiece>();
+
+            //move place position and rotation according to the opponent? I think yes!
+            inst.transform.parent = transform;
+            inst.transform.localPosition = Vector3.back * -16f;
+            inst.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, _player.transform.rotation.eulerAngles.z));
+            inst.transform.position += Vector3.back * 0.2f;
+
+            instpp._player = _player;
+            
+            
+            instpp._networkId = GameManager.NetworkIdCounter++;
+            //add piece to playfield
+            return inst;
         }
         
-        private void GameOver()
+        private bool NoCreatures()
         {
-            //TODO: Refactor this logic to occur on player class by subscribing to event
-            _player.DisableAllCards();
-            _player.OppositePlayer.DisableAllCards();
-
-            if (OnHandIsOutOfCards != null)
-            {
-                OnHandIsOutOfCards(_player);
-            }
-                
-        }
-
-        private void OnMouseUp()
-        {
-            //if highlight is set to true, find the highlighted card and move the position
-            //call add function
-            if (active == true && BaseCard.highlighted == false)
-            {
-                card = _player.Hand.FindHighlighted();
-                Add(card);
-            }
-        }
-
-        private bool active = false;
-
-
-        private void OnMouseOver()
-        {
-            //set variable to be true
-            active = true;
-        }
-
-        private void OnMouseExit()
-        {
-            //set variable to be false
-            active = false;
+            //TODO if no creatures and there is no card being played, left school is discarded
+            return true;
         }
         
-        protected override void Remove(BaseCard card)
-        {
-            Cards.Remove(card);
-        }
 
-        /// <summary>
-        /// Adds a card to the bottom of the deck
-        /// </summary>
-        public override void Add(BaseCard card)
-        {
-            MoveToThisCollection(card);
-
-            Cards.Insert(0, card);
-
-            card.transform.parent = transform;
-
-            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 16f);
-            cardPos.z -= Cards.IndexOf(card) * 0.2f;
-
-            var tween = new MoveTween
-            {
-                Target = card.gameObject,
-                Position = cardPos,
-                Time = 0.25f,
-                Flip = FlipState.FaceUp,
-                Rotate = TweenRotationType.NoRotate,
-                OnCompleteCallback = () => card.State = State.InDeck
-            };
-
-            GameManager.TweenQueue.AddTweenToQueue(tween);
-        }
-
-        public override void AddAll(IEnumerable<BaseCard> cards)
+        public void AddAll(IEnumerable<BaseCard> cards)
         {
             //adds all cards??
             throw new NotImplementedException();
         }
 
-        protected override void RemoveAll(IEnumerable<BaseCard> cards)
+        protected void RemoveAll(IEnumerable<BaseCard> cards)
         {
             //remove all cards from the field??
             throw new NotImplementedException();

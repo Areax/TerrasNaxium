@@ -82,9 +82,10 @@ namespace HarryPotterUnity.Game
 
             Hand = transform.GetComponentInChildren<Hand>();
             Hand.gameObject.AddComponent<NaxHand>();
-            Deck = transform.GetComponentInChildren<Deck>();
+            //Deck = transform.GetComponentInChildren<Deck>();
             InPlay = transform.GetComponentInChildren<InPlay>();
             Discard = transform.GetComponentInChildren<Discard>();
+            PlayField = transform.GetComponentInChildren<PlayField>();
 
             TypeImmunity = new HashSet<Type>();
 
@@ -95,7 +96,6 @@ namespace HarryPotterUnity.Game
         public void InitDeck(List<LessonTypes> selectedLessons)
         {
             prebuiltCards = GameManager.GetPlayerTestDeck(NetworkId);
-            Debug.Log(prebuiltCards.ToString());
             List<BaseCard> cards;
             BaseCard startingCharacter;
 

@@ -198,7 +198,7 @@ namespace HarryPotterUnity.Cards
 
         public void OnMouseUp()
         {
-            
+            //static booleans screw up when you exit the game lol
             Debug.Log("moused up!");
             if (stillOnCard == false) return; //Do not call OnMouseDown if cursor has left the object
             

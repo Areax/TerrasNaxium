@@ -50,7 +50,7 @@ namespace HarryPotterUnity.UI.Menu
                     }
                 };
 
-                _localPlayer.Deck.OnDeckIsOutOfCards += ShowGameOverMessage;
+                //_localPlayer.Deck.OnDeckIsOutOfCards += ShowGameOverMessage;
             }
         }
 
@@ -74,7 +74,7 @@ namespace HarryPotterUnity.UI.Menu
                 _remotePlayer.OnTurnStart += () => _actionsLeftLabelRemote.GetComponent<Animator>().SetBool("IsOpen", true);
                 _remotePlayer.OnTurnEnd   += () => _actionsLeftLabelRemote.GetComponent<Animator>().SetBool("IsOpen", false);
 
-                _remotePlayer.Deck.OnDeckIsOutOfCards += ShowGameOverMessage;
+                //_remotePlayer.Deck.OnDeckIsOutOfCards += ShowGameOverMessage;
             }
         }
 
@@ -133,14 +133,14 @@ namespace HarryPotterUnity.UI.Menu
             {
                 //Update Local Player Properties
                 _actionsLeftLabelLocal.text = string.Format("Actions Left: {0}", LocalPlayer.ActionsAvailable);
-                _cardsLeftLabelLocal.text = string.Format("Cards Left: {0}", LocalPlayer.Deck.Cards.Count);
+                //_cardsLeftLabelLocal.text = string.Format("Cards Left: {0}", LocalPlayer.Deck.Cards.Count);
             }
 
             if (RemotePlayer != null)
             {
                 //Update Remote Plater Properties
                 _actionsLeftLabelRemote.text = string.Format("Actions Left: {0}", RemotePlayer.ActionsAvailable);
-                _cardsLeftLabelRemote.text = string.Format("Cards Left: {0}", RemotePlayer.Deck.Cards.Count);
+                //_cardsLeftLabelRemote.text = string.Format("Cards Left: {0}", RemotePlayer.Deck.Cards.Count);
             }
         }
 

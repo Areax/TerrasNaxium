@@ -30,9 +30,6 @@ namespace HarryPotterUnity.Game
             col.isTrigger = true;
             col.size = new Vector3(50f, 70f, 1f);
             col.center = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 0f);
-            image = Resources.Load("AlbusDumbledore") as GameObject;
-            image = Instantiate(image);
-            image.transform.parent = transform;
         }
         
 

@@ -39,6 +39,14 @@ namespace HarryPotterUnity.Game
             return true;
         }
 
+        private bool hasSomething = false;
+
+        public bool HasSomething()
+        {
+            //if has child, return true :)
+            return hasSomething ? true : false;
+        }
+
         private void OnMouseUp()
         {
             //if highlight is set to true, find the highlighted card and move the position
@@ -53,6 +61,26 @@ namespace HarryPotterUnity.Game
                 }
                 
             }
+
+            if (BaseCard.highlighted == true)//&& clicked on empty PlayField)
+            {
+                return;
+            }
+            if (HasSomething())
+            {
+                //????
+                //stop the clicking of objects
+
+                //_inputGatherer.GatherInput(InputGatherMode.FromHandAction);
+
+                //if true, move to specific location, indicated by card, set parent
+            }
+            else
+            {
+                //allow card to come :D
+                //GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
+            }
+
         }
 
         private bool active = false;
@@ -86,8 +114,8 @@ namespace HarryPotterUnity.Game
 
             card.transform.parent = transform;
 
-            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y, -16f);
-            cardPos.z -= Cards.IndexOf(card) * 0.2f;
+            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y, -1);
+            //cardPos.z += Cards.IndexOf(card) * 10f;
 
             var tween = new MoveTween
             {

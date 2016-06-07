@@ -202,25 +202,17 @@ namespace HarryPotterUnity.Cards
             Debug.Log("moused up!");
             if (stillOnCard == false) return; //Do call OnMouseDown if cursor has left the object
             
-
             if (GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
-            if (highlighted == true )//&& clicked on empty PlayField)
-            {
-                return;
-            }
-            if (_outline.activeSelf == true)
-            {
-                //_inputGatherer.GatherInput(InputGatherMode.FromHandAction);
 
-                //if true, move to specific location, indicated by card, set parent
-                _outline.SetActive(false);
+            if (highlighted && _outline.activeSelf == true)
+            {
                 highlighted = false;
+                _outline.SetActive(false);
             }
-            else
+            else if(!highlighted)
             {
                 _outline.SetActive(true);
                 highlighted = true;
-                //GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
             }
 
         }

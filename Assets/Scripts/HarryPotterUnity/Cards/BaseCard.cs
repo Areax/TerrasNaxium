@@ -199,10 +199,9 @@ namespace HarryPotterUnity.Cards
         public void OnMouseUp()
         {
             //static booleans screw up when you exit the game lol
-            Debug.Log("moused up!");
-            if (stillOnCard == false) return; //Do call OnMouseDown if cursor has left the object
-            
-            if (GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
+            //if this card is not yours you can't highlight it silly
+            if (stillOnCard == false || GameManager.IsInputGathererActive) return; //Do call OnMouseDown if cursor has left the object
+            //Player clicked on this card as a target, not to activate its effect.
 
             if (highlighted && _outline.activeSelf == true)
             {

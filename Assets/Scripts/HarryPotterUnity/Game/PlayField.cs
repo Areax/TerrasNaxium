@@ -14,14 +14,20 @@ namespace HarryPotterUnity.Game
     {
         private Player _player;
 
-        private readonly Vector2 _playFieldOffset = new Vector2(100f, 0f);
+        private readonly Vector2 _playFieldOffset = new Vector2(0f, -85f);
         //TL = top left, BR = bottom right, TM = top middle
-        private int _playPieceTL = 100;
+        private readonly Vector3 _playPieceTL = new Vector3(-150f, -50f, 0f);
+        private readonly Vector3 _playPieceTM = new Vector3(0f, -50f, 0f);
+        private readonly Vector3 _playPieceTR = new Vector3(150f, -50f, 0f);
+        private readonly Vector3 _playPieceBL = new Vector3(-150f, -130f, 0f);
+        private readonly Vector3 _playPieceBM = new Vector3(0f, -130f, 0f);
+        private readonly Vector3 _playPieceBR = new Vector3(150f, -130f, 0f);
+        /*private int _playPieceTL = 100;
         private int _playPieceTM = 200;
         private int _playPieceTR = 300;
         private int _playPieceBL = 400;
         private int _playPieceBM = 500;
-        private int _playPieceBR = 600;
+        private int _playPieceBR = 600;*/
 
         private GameObject TL;
         private GameObject TM;
@@ -42,28 +48,34 @@ namespace HarryPotterUnity.Game
             _player = transform.GetComponentInParent<Player>();
             var col = gameObject.AddComponent<BoxCollider>();
             col.isTrigger = true;
-            col.size = new Vector3(50f, 70f, 1f);
+            col.size = new Vector3(550f, 150f, 0f);
             col.center = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 0f);
             //create 6 PlayPieces
             TL = createPiece(_playPieceTL);
+            TL.name = "TL";
             TM = createPiece(_playPieceTM);
+            TM.name = "TM";
             TR = createPiece(_playPieceTR);
+            TR.name = "TR";
             BL = createPiece(_playPieceBL);
+            BL.name = "BL";
             BM = createPiece(_playPieceBM);
+            BM.name = "BM";
             BR = createPiece(_playPieceBR);
+            BR.name = "BR";
         }
         private GameObject Instance = Resources.Load("AlbusDumbledore") as GameObject;
 
-        private GameObject createPiece(int area)
+        private GameObject createPiece(Vector3 area)
         {
             var inst = Instantiate(Instance);
             var instpp = inst.AddComponent<PlayPiece>();
 
             //move place position and rotation according to the opponent? I think yes!
             inst.transform.parent = transform;
-            inst.transform.localPosition = Vector3.down * 80f + (Vector3.right - Vector3.right/4) * area;
+            inst.transform.localPosition = area;//Vector3.down * 80f + (Vector3.right - Vector3.right/4) * area;
             inst.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, _player.transform.rotation.eulerAngles.z));
-            inst.transform.position += Vector3.back * -.02f;
+
 
             instpp._player = _player;
             

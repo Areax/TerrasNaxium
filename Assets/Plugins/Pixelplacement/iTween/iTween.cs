@@ -7735,12 +7735,12 @@ public class iTween : MonoBehaviour
             }
         }
 
-        Id = (string)_tweenArguments["id"];
-        Type = (string)_tweenArguments["type"];
+       // Id = (string)_tweenArguments["id"];
+       // Type = (string)_tweenArguments["type"];
         /* GFX47 MOD START */
-        Name = (string)_tweenArguments["name"];
+       // Name = (string)_tweenArguments["name"];
         /* GFX47 MOD END */
-        Method = (string)_tweenArguments["method"];
+       // Method = (string)_tweenArguments["method"];
 
         if (_tweenArguments.Contains("time"))
         {

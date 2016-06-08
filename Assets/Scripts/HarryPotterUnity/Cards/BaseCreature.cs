@@ -11,25 +11,33 @@ namespace HarryPotterUnity.Cards
 
         [Header("Creature Settings")]
         [SerializeField, UsedImplicitly]
-        protected int _damagePerTurn;
+        protected int _attack;
 
         [SerializeField, UsedImplicitly]
         protected int _health;
+
+        [SerializeField, UsedImplicitly]
+        protected int _speed;
+
+        [SerializeField, UsedImplicitly]
+        protected int _armor;
 
         private GameObject _uiCanvas;
         private Text _healthLabel;
         protected Text _attackLabel;
         
-        public int DamagePerTurn { get { return _damagePerTurn; } }
+        public int Attack { get { return _attack; } }
 
-        public int MaxHealth { get; private set; }
+        public int Health { get { return _health; } }
+
+        public int Speed { get { return _speed; } }
+
+        public int Armor { get { return _armor; } }
 
         protected override void Start()
         {
             base.Start();
             LoadUiOverlay();
-
-            MaxHealth = _health;
         }
 
         private void LoadUiOverlay()
@@ -45,7 +53,7 @@ namespace HarryPotterUnity.Cards
             _attackLabel = _uiCanvas.transform.FindChild("AttackLabel").gameObject.GetComponent<Text>();
 
             _healthLabel.text = _health.ToString();
-            _attackLabel.text = _damagePerTurn.ToString();
+            _attackLabel.text = Attack.ToString();
 
             _uiCanvas.SetActive(false);
         }
@@ -73,7 +81,7 @@ namespace HarryPotterUnity.Cards
 
         public void Heal(int amount)
         {
-            _health = Mathf.Clamp(_health + amount, 0, MaxHealth);
+            _health = Mathf.Clamp(_health + amount, 0, Health);
 
             _healthLabel.text = _health.ToString();
         }

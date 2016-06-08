@@ -8,8 +8,8 @@
         {
             if (Player.OppositePlayer.InPlay.Creatures.Count != 0) return;
             
-            _damagePerTurn += 3;
-            _attackLabel.text = _damagePerTurn.ToString();
+            _attack += 3;
+            _attackLabel.text = _attack.ToString();
             _hasAddedDamage = true;
         }
 
@@ -17,8 +17,8 @@
         {
             if (!_hasAddedDamage) return;
 
-            _damagePerTurn -= 3;
-            _attackLabel.text = _damagePerTurn.ToString();
+            _attack -= 3;
+            _attackLabel.text = _attack.ToString();
             _hasAddedDamage = false;
         }
     }

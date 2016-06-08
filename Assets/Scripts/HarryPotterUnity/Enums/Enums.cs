@@ -24,11 +24,6 @@ namespace HarryPotterUnity.Enums
         Owl         = 1 << 6
     }
 
-    public enum Rarity
-    {
-        Common, Uncommon, Rare, UltraRare
-    }
-
     public enum LessonTypes
     {
         Creatures, Demigods, Transfiguration, Potions, Quidditch

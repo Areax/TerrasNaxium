@@ -9,7 +9,7 @@ namespace HarryPotterUnity.Cards.Demigods.Spells
         {
             foreach (var creature in Player.InPlay.Creatures.Cast<BaseCreature>())
             {
-                creature.Heal(creature.MaxHealth);
+                creature.Heal(creature.Health);
             }
         }
     }

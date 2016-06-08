@@ -23,8 +23,6 @@ namespace HarryPotterUnity.Cards
         [Header("Deck Generation Options")]
         [SerializeField, UsedImplicitly]
         private ClassificationTypes _classification;
-        [SerializeField, UsedImplicitly]
-        private Rarity _rarity;
 
         [Header("Card Settings")]
         [SerializeField, EnumFlags]
@@ -38,7 +36,6 @@ namespace HarryPotterUnity.Cards
         protected abstract Type GetCardType();
 
         public FlipState FlipState { private get; set; }
-        public Rarity Rarity { get { return _rarity; } set { _rarity = value; } }
 
         public Player Player { get; set; }
 

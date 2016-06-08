@@ -22,7 +22,6 @@ namespace HarryPotterExtensions
 
             public Type CardType { get; set; }
             public ClassificationTypes Classification { get; set; }
-            public Rarity Rarity { get; set; }
             
             public bool AddLessonRequirement { get; set; }
             public LessonTypes LessonType { get; set; }
@@ -156,7 +155,6 @@ namespace HarryPotterExtensions
 
                 var newComponent = (BaseCard) card.AddComponent(scriptType);
                 newComponent.Classification = request.Classification;
-                newComponent.Rarity = request.Rarity;
             }
         }
 
@@ -269,7 +267,6 @@ namespace HarryPotterExtensions
 
             _cardRequest.CardType = (Type) EditorGUILayout.EnumPopup("Card Type: ", _cardRequest.CardType);
             _cardRequest.Classification = (ClassificationTypes) EditorGUILayout.EnumPopup("Classification: ", _cardRequest.Classification);
-            _cardRequest.Rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity: ", _cardRequest.Rarity);
         }
 
         private void ChooseCardTexture()

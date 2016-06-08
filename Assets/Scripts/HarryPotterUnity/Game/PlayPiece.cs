@@ -95,10 +95,12 @@ namespace HarryPotterUnity.Game
             //set variable to be false
             active = false;
         }
-        
+        //card.attack()
         protected override void Remove(BaseCard card)
         {
-            Cards.Remove(card);
+            if (card is BaseCreature)
+                Cards.Remove(card);
+            else if (true) ;//this case card is spell and is removed at the end of the turn?)
         }
 
         /// <summary>

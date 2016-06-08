@@ -143,8 +143,7 @@ namespace HarryPotterUnity.DeckGeneration
                 var deckCopy = deck.ToList();
 
                 bool canBeAdded = (card.DeckGenerationRequirements.Count == 0 || 
-                                   card.DeckGenerationRequirements.All(req => req.MeetsRequirement(deckCopy))) && 
-                                   card.MeetsRarityRequirements() &&
+                                   card.DeckGenerationRequirements.All(req => req.MeetsRequirement(deckCopy))) &&
                                    deck.Count(c => c.CardName.Equals(card.CardName)) < 4;
                 
                 if (canBeAdded)
@@ -154,35 +153,7 @@ namespace HarryPotterUnity.DeckGeneration
                 }
             }
         }
-
-        private static bool MeetsRarityRequirements(this BaseCard card)
-        {
-            float chanceToAdd;
-
-            float rng = Random.Range(0f, 1f);
-
-            switch (card.Rarity)
-            {
-                case Rarity.Common:
-                    chanceToAdd = 1f;
-                    break;
-                case Rarity.Uncommon:
-                    chanceToAdd = 0.7f;
-                    break;
-                case Rarity.Rare:
-                    chanceToAdd = 0.5f;
-                    break;
-                case Rarity.UltraRare:
-                    chanceToAdd = 0.3f;
-                    break;
-                default:
-                    chanceToAdd = 1f;
-                    break;
-            }
-
-            return rng <= chanceToAdd;
-        }
-
+        
         public static void ResetStartingCharacterPool()
         {
             _availableStartingCharacters = new List<BaseCard>();

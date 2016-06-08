@@ -2,38 +2,32 @@ Initialize engine version: 5.3.5f1 (960ebf59018a)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 465 (ID=0x6c4)
-    Vendor:   NVIDIA
-    VRAM:     978 MB
+    Renderer: AMD Radeon R9 200 Series (ID=0x67b1)
+    Vendor:   ATI
+    VRAM:     3072 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Unity-Debug-Log-Wrapper.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\Unity-Debug-Log-Wrapper.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.226 seconds
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: F:\Unity\Projects\Harry-Potter-Unity-master\Test_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 3600x1080 at 0,0
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\Unity-Debug-Log-Wrapper.dll (this message is harmless)
+Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\Unity-Debug-Log-Wrapper.dll into Unity Child Domain
+- Completed reload, in  0.071 seconds
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initializing input.
-XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
-desktop: 1680x1050 59Hz; virtual: 3600x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 0.856759 ms
+UnloadTime: 0.777822 ms
 Initialize Log
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
@@ -50,397 +44,18 @@ Joined Photon Room, Waiting for Players...
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
-New Player has Connected, Starting Game...
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Generating Player Decks
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Generate Deck with Prebuilt Deck finished with CardCount = 54
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Generate Deck with Prebuilt Deck finished with CardCount = 54
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game setup complete, starting match
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Potions from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Potions from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Potions from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Charms from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Location: DumbledoresOffice from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Item: QuidditchCup from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Potions from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Item: Remembrall from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 plays card Spell: DogbreathPotion targeting Character: HermioneGranger
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Spell: SearchingfortheSnitch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Activates Item: Remembrall's effect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 plays card Spell: Hover_Charm targeting Item: QuidditchCup
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Item: QuidditchCup from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Character: AlbusDumbledore from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Spell: PotionsHomework from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Creatures from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Creature: Manticore from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Item: PhilosophersStone from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Creature: Marble_Gargoyle from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Creature: Griffindor_Lion from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Transfiguration from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Activates Item: Remembrall's effect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Creature: Sandstone_Gargoyle from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Creature: Sandstone_Gargoyle from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Item: Collapsible_Cauldron from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Activates Item: Remembrall's effect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Location: PotionsDungeon from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Activates Item: Remembrall's effect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Spell: PenaltyShot from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Charms from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 plays card Spell: FreezingCharm targeting Creature: Manticore
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Activates Item: PhilosophersStone's effect
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Lesson: Quidditch from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 Plays Spell: Hawkshead_Formation from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Plays Lesson: Potions from hand
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 Draws a Card
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-ArgumentOutOfRangeException: Argument is out of range.
-Parameter name: index
-  at System.Collections.Generic.List`1[HarryPotterUnity.Cards.BaseCard].get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at HarryPotterUnity.Game.Deck.OnMouseExit () [0x00000] in <filename unknown>:0 
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.HitInfo:SendMessage(String)
-UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
-UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32)
- 
-(Filename:  Line: -1)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 2 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Player 1 skipped an action
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
-Game Over
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
-
 Player Disconnected, Back to Main Menu
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
+Connected to Photon Master Server
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Joined v0.2-dev Lobby
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1c94 -> priority: 1 
-  Thread -> id: 774 -> priority: 1 
+  Thread -> id: 87f0 -> priority: 1 
+  Thread -> id: 4648 -> priority: 1 

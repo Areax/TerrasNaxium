@@ -29,7 +29,7 @@ namespace HarryPotterUnity.Game
         private int _playPieceBM = 500;
         private int _playPieceBR = 600;*/
 
-        public static List<PlayPiece> PlayPieces;
+
 
         public GameObject TL;
         public GameObject TM;
@@ -48,7 +48,7 @@ namespace HarryPotterUnity.Game
 
         public PlayPiece findId(byte networkid)
         {
-            foreach(PlayPiece ob in PlayPieces)
+            foreach(GameObject ob in GameManager.PlayPieces)
             {
                 if (ob.GetComponent<PlayPiece>()._networkId == networkid) return ob.GetComponent<PlayPiece>();
             }
@@ -89,7 +89,7 @@ namespace HarryPotterUnity.Game
         {
             ob = createPiece(area);
             ob.name = ob.ToString();
-            PlayPieces.Add(ob.GetComponent<PlayPiece>());
+            GameManager.PlayPieces.Add(ob);
         }
 
         public void HandtoField(BaseCard card, PlayPiece field)
@@ -123,7 +123,6 @@ namespace HarryPotterUnity.Game
         {
             var inst = Instantiate(Instance);
             var instpp = inst.AddComponent<PlayPiece>();
-
             //move place position and rotation according to the opponent? I think yes!
             inst.transform.parent = transform;
             inst.transform.localPosition = area;//Vector3.down * 80f + (Vector3.right - Vector3.right/4) * area;

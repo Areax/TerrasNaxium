@@ -131,7 +131,7 @@ namespace HarryPotterUnity.Game
             GameManager.TweenQueue.AddTweenToQueue(tween);
         }
 
-        public override void Add(BaseCard card, PlayPiece field)
+        public void Add(BaseCard card, PlayPiece field)
         {
             if (card == null) return;
 

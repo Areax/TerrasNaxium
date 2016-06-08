@@ -240,8 +240,7 @@ namespace HarryPotterUnity.Game
             var player = id == 0 ? _player1 : _player2;
             BaseCard card = GameManager.AllCards.Find(c => c.NetworkId == id);
             Log.Write("Player {0} Plays a Card", player.NetworkId + 1);
-            PlayPiece piece = PlayField.PlayPieces.Find(o => o._networkId == fieldId);
-            if (piece == null) Debug.Log("player" + id + " is broken and card is missing");
+            PlayPiece piece = player.PlayField.findId(fieldId);
             player.PlayField.HandtoField(card,piece);
 
         }

@@ -29,6 +29,8 @@ namespace HarryPotterUnity.Game
         private int _playPieceBM = 500;
         private int _playPieceBR = 600;*/
 
+        public List<GameObject> PlayPieces;
+
         public GameObject TL;
         public GameObject TM;
         public GameObject TR;
@@ -44,6 +46,11 @@ namespace HarryPotterUnity.Game
             OnHandIsOutOfCards = null;
         }
 
+        public GameObject findId(byte networkid)
+        {
+            
+        }
+
         private void Awake()
         {
             _player = transform.GetComponentInParent<Player>();
@@ -52,8 +59,16 @@ namespace HarryPotterUnity.Game
             col.size = new Vector3(550f, 150f, 0f);
             col.center = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 0f);
             //create 6 PlayPieces
-            TL = createPiece(_playPieceTL);
+            PiecetoList(TL, _playPieceTL);
+            PiecetoList(TM, _playPieceTM);
+            PiecetoList(TR, _playPieceTR);
+            PiecetoList(BL, _playPieceBL);
+            PiecetoList(BM, _playPieceBM);
+            PiecetoList(BR, _playPieceBR);
+
+            /*TL = createPiece(_playPieceTL);
             TL.name = "TL";
+            PlayPieces.Add(TL);
             TM = createPiece(_playPieceTM);
             TM.name = "TM";
             TR = createPiece(_playPieceTR);
@@ -63,7 +78,14 @@ namespace HarryPotterUnity.Game
             BM = createPiece(_playPieceBM);
             BM.name = "BM";
             BR = createPiece(_playPieceBR);
-            BR.name = "BR";
+            BR.name = "BR";*/
+        }
+
+        public void PiecetoList(GameObject ob, Vector3 area)
+        {
+            ob = createPiece(area);
+            ob.name = ob.ToString();
+            PlayPieces.Add(ob);
         }
         private GameObject Instance = Resources.Load("AlbusDumbledore") as GameObject;
 

@@ -56,8 +56,7 @@ namespace HarryPotterUnity.Game
                 if(card != null)
                 {
                     Add(card);
-                    GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, _networkId);
-
+                    GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, card.NetworkId, _networkId);
                 }
                 
             }
@@ -110,6 +109,8 @@ namespace HarryPotterUnity.Game
         /// </summary>
         public override void Add(BaseCard card)
         {
+            if (card == null) return;
+
             MoveToThisCollection(card);
 
             Cards.Insert(0, card);

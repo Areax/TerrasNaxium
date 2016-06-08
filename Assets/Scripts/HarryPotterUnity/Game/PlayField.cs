@@ -29,7 +29,7 @@ namespace HarryPotterUnity.Game
         private int _playPieceBM = 500;
         private int _playPieceBR = 600;*/
 
-        public List<GameObject> PlayPieces;
+        public static List<PlayPiece> PlayPieces;
 
         public GameObject TL;
         public GameObject TM;
@@ -48,7 +48,7 @@ namespace HarryPotterUnity.Game
 
         public PlayPiece findId(byte networkid)
         {
-            foreach(GameObject ob in PlayPieces)
+            foreach(PlayPiece ob in PlayPieces)
             {
                 if (ob.GetComponent<PlayPiece>()._networkId == networkid) return ob.GetComponent<PlayPiece>();
             }
@@ -89,7 +89,7 @@ namespace HarryPotterUnity.Game
         {
             ob = createPiece(area);
             ob.name = ob.ToString();
-            PlayPieces.Add(ob);
+            PlayPieces.Add(ob.GetComponent<PlayPiece>());
         }
 
         public void HandtoField(BaseCard card, PlayPiece field)

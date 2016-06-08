@@ -240,7 +240,8 @@ namespace HarryPotterUnity.Game
             var player = id == 0 ? _player1 : _player2;
             BaseCard card = GameManager.AllCards.Find(c => c.NetworkId == id);
             Log.Write("Player {0} Plays a Card", player.NetworkId + 1);
-            player.PlayField.TL.GetComponent<PlayPiece>().HandtoField(card,field);
+            player.PlayField.TL.GetComponent<PlayPiece>().HandtoField(card,fieldId);
+
         }
 
         [PunRPC, UsedImplicitly]

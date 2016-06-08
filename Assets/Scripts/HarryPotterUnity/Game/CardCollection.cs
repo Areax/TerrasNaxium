@@ -73,7 +73,7 @@ namespace HarryPotterUnity.Game
             Cards = new List<BaseCard>();
         }
 
-        protected void MoveToThisCollection(BaseCard card)
+        public void MoveToThisCollection(BaseCard card)
         {
             if (card.CurrentCollection.Contains(card))
             {

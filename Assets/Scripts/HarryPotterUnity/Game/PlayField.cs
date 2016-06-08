@@ -46,9 +46,13 @@ namespace HarryPotterUnity.Game
             OnHandIsOutOfCards = null;
         }
 
-        public GameObject findId(byte networkid)
+        public PlayPiece findId(byte networkid)
         {
-            
+            foreach(GameObject ob in PlayPieces)
+            {
+                if (ob.GetComponent<PlayPiece>()._networkId == networkid) return ob.GetComponent<PlayPiece>();
+            }
+            return null;
         }
 
         private void Awake()
@@ -87,6 +91,32 @@ namespace HarryPotterUnity.Game
             ob.name = ob.ToString();
             PlayPieces.Add(ob);
         }
+
+        public void HandtoField(BaseCard card, PlayPiece field)
+        {
+            if (card == null) return;
+
+            field.MoveToThisCollection(card);
+
+            field.Cards.Insert(0, card);
+
+            card.transform.parent = field.transform;
+            Debug.Log("moving card from PlayPiece");
+
+            var tween = new MoveTween
+            {
+                Target = card.gameObject,
+                Position = transform.parent.position + Vector3.back * 1.5f,
+                Time = 0.25f,
+                Flip = FlipState.FaceUp,
+                Rotate = TweenRotationType.NoRotate,
+                OnCompleteCallback = () => card.State = State.InDeck
+            };
+
+            GameManager.TweenQueue.AddTweenToQueue(tween);
+        }
+
+
         private GameObject Instance = Resources.Load("AlbusDumbledore") as GameObject;
 
         private GameObject createPiece(Vector3 area)

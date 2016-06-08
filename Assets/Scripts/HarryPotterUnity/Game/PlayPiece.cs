@@ -56,7 +56,7 @@ namespace HarryPotterUnity.Game
                 if(card != null)
                 {
                     Add(card);
-                    GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, card.NetworkId, _networkId);
+                    GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, _player.NetworkId, card.NetworkId, _networkId);
                 }
                 
             }

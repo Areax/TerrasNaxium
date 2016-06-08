@@ -235,9 +235,9 @@ namespace HarryPotterUnity.Game
         }
 
         [PunRPC, UsedImplicitly]
-        public void ExecutePlayCardToField(byte id,byte fieldId)
+        public void ExecutePlayCardToField(byte pid, byte id,byte fieldId)
         {
-            var player = id == 0 ? _player1 : _player2;
+            var player = pid == 0 ? _player1 : _player2;
             BaseCard card = GameManager.AllCards.Find(c => c.NetworkId == id);
             Log.Write("Player {0} Plays a Card", player.NetworkId + 1);
             PlayPiece piece = player.PlayField.findId(fieldId);

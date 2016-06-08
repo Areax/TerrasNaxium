@@ -12,24 +12,18 @@ using UnityEngine;
 using UnityLogWrapper;
 using Type = HarryPotterUnity.Enums.Type;
 
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-
 namespace HarryPotterUnity.Cards
 {
     [SelectionBase]
     public abstract class BaseCard : MonoBehaviour
     {
         [Header("Deck Generation Options")]
-        [SerializeField, UsedImplicitly]
-        private ClassificationTypes _classification;
-        [SerializeField, UsedImplicitly]
-        private Rarity _rarity;
+        [SerializeField, UsedImplicitly] private ClassificationTypes _classification;
+        [SerializeField, UsedImplicitly] private Rarity _rarity;
 
         [Header("Card Settings")]
         [SerializeField, EnumFlags]
-        [UsedImplicitly]
-        private Tag _tags;
+        [UsedImplicitly] private Tag _tags;
 
         public State State { get; set; }
         public ClassificationTypes Classification { get { return _classification; } set { _classification = value; } }

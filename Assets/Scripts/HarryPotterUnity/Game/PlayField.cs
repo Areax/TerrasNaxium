@@ -23,7 +23,7 @@ namespace HarryPotterUnity.Game
         private readonly Vector2 _playPieceBM = new Vector2(100f, 0f);
         private readonly Vector2 _playPieceBR = new Vector2(100f, 0f);
 
-        private GameObject TL;
+        public GameObject TL;
         private PlayPiece TM;
         private PlayPiece TR;
         private PlayPiece BL;

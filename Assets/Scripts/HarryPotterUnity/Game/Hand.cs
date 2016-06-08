@@ -20,7 +20,6 @@ namespace HarryPotterUnity.Game
         private void Awake()
         {
             _player = transform.GetComponentInParent<Player>();
-            
         }
 
         public override void Add(BaseCard card)
@@ -39,6 +38,7 @@ namespace HarryPotterUnity.Game
                 Cards[i] = Instantiate(Cards[i]);
 
                 Cards[i].transform.parent = transform;
+                
                 //Cards[i].transform.localPosition = i * Vector3.right * -60f + 8 * Vector3.down * 25f + Vector3.right * 200f;
                 Cards[i].transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, _player.transform.rotation.eulerAngles.z));
                 Cards[i].transform.position += i * Vector3.back * 0.2f;
@@ -53,10 +53,7 @@ namespace HarryPotterUnity.Game
             }
             AdjustHandSpacing();
         }
-
-
-
-        public void Add(BaseCard card, bool preview, bool adjustSpacing)
+    public void Add(BaseCard card, bool preview, bool adjustSpacing)
         {
             if (adjustSpacing) AdjustHandSpacing();
 

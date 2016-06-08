@@ -131,15 +131,8 @@ namespace HarryPotterUnity.Game
             GameManager.TweenQueue.AddTweenToQueue(tween);
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public void Add(BaseCard card, PlayPiece field)
-=======
+
         public void HandtoField(BaseCard card, PlayPiece field)
->>>>>>> origin/Testing
-=======
-        public override void Add(BaseCard card, PlayPiece field)
->>>>>>> parent of dcdc808... ??
         {
             if (card == null) return;
 

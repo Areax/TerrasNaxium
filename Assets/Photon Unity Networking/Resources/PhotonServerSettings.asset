@@ -37,4 +37,5 @@ MonoBehaviour:
   - StartGameRpc
   - ExecuteInPlayActionById
   - ExecuteInPlayInputCardById
+  - ExecutePlayCardToField
   DisableAutoOpenWizard: 1

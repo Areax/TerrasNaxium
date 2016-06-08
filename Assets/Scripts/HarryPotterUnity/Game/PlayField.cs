@@ -29,12 +29,21 @@ namespace HarryPotterUnity.Game
         private int _playPieceBM = 500;
         private int _playPieceBR = 600;*/
 
+<<<<<<< HEAD
+        public GameObject TL;
+        private PlayPiece TM;
+        private PlayPiece TR;
+        private PlayPiece BL;
+        private PlayPiece BM;
+        private PlayPiece BR;
+=======
         private GameObject TL;
         private GameObject TM;
         private GameObject TR;
         private GameObject BL;
         private GameObject BM;
         private GameObject BR;
+>>>>>>> origin/Testing
 
         public event Action<Player> OnHandIsOutOfCards;
 

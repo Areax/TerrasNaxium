@@ -120,7 +120,6 @@ namespace HarryPotterUnity.Cards
 
             AddOutlineComponent();
             AddHighlightComponent();
-            AddDraggingComponent();
         }
 
         private void AddOutlineComponent()
@@ -143,11 +142,6 @@ namespace HarryPotterUnity.Cards
             _highlight.transform.parent = transform;
 
             _highlight.SetActive(false);
-        }
-
-        private void AddDraggingComponent()
-        {
-            gameObject.AddComponent<NaxClick>();
         }
 
 

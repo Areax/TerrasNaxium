@@ -81,7 +81,6 @@ namespace HarryPotterUnity.Game
             ActionsAvailable = 0;
 
             Hand = transform.GetComponentInChildren<Hand>();
-            Hand.gameObject.AddComponent<NaxHand>();
             //Deck = transform.GetComponentInChildren<Deck>();
             InPlay = transform.GetComponentInChildren<InPlay>();
             Discard = transform.GetComponentInChildren<Discard>();

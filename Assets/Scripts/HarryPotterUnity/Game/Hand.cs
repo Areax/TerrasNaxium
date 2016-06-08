@@ -124,7 +124,7 @@ namespace HarryPotterUnity.Game
         {
             var tween = new AsyncMoveTween
             {
-                Targets = Cards.ToList(),
+                Targets = Cards,
                 GetPosition = GetTargetPositionForCard
             };
             GameManager.TweenQueue.AddTweenToQueue(tween);

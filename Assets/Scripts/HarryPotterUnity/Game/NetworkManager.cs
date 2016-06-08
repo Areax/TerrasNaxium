@@ -176,8 +176,6 @@ namespace HarryPotterUnity.Game
                 gameplayMenu.RemotePlayer = _player1.IsLocalPlayer ? _player2 : _player1;
 
                 _menuManager.ShowMenu(gameplayMenu);
-
-                //gameBackground.SetActive(true);
             }
             else
             {

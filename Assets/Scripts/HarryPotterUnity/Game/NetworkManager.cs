@@ -239,6 +239,7 @@ namespace HarryPotterUnity.Game
         {
             var player = id == 0 ? _player1 : _player2;
             BaseCard card = GameManager.AllCards.Find(c => c.NetworkId == id);
+            BaseCard blah = player.PlayField.PlayPieces.Find(o => o._networkid == id);
             Log.Write("Player {0} Plays a Card", player.NetworkId + 1);
             player.PlayField.TL.GetComponent<PlayPiece>().Add(card);
         }

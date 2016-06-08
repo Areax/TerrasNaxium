@@ -56,7 +56,7 @@ namespace HarryPotterUnity.Game
                 if(card != null)
                 {
                     Add(card);
-                    GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, _networkId);
+                   // GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, _networkId);
 
                 }
                 
@@ -116,7 +116,19 @@ namespace HarryPotterUnity.Game
 
             card.transform.parent = transform;
             Debug.Log("moving card from PlayPiece");
+            /*
+            var previewTween = new MoveTween
+            {
+                Target = card.gameObject,
+                Position = transform.parent.position + Vector3.back * 1.5f,
+                Time = 0.5f,
+                Flip = FlipState.FaceUp,
+                Rotate = TweenRotationType.NoRotate,
+                OnCompleteCallback = () => card.State = State.InHand
+            };
+            GameManager.TweenQueue.AddTweenToQueue(previewTween);
 
+            *//*
             var tween = new MoveTween
             {
                 Target = card.gameObject,
@@ -127,9 +139,9 @@ namespace HarryPotterUnity.Game
                 OnCompleteCallback = () => card.State = State.InDeck
             };
 
-            GameManager.TweenQueue.AddTweenToQueue(tween);
+            GameManager.TweenQueue.AddTweenToQueue(tween);*/
         }
-
+        
         public override void AddAll(IEnumerable<BaseCard> cards)
         {
             //adds all cards??

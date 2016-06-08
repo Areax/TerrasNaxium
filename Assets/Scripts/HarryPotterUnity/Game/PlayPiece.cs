@@ -131,7 +131,6 @@ namespace HarryPotterUnity.Game
             GameManager.TweenQueue.AddTweenToQueue(tween);
         }
 
-
         public override void AddAll(IEnumerable<BaseCard> cards)
         {
             //adds all cards??

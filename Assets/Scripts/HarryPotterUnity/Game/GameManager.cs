@@ -14,7 +14,7 @@ namespace HarryPotterUnity.Game
         public const int VALID_CHOICE_LAYER = 11;
         public const int IGNORE_RAYCAST_LAYER = 2;
         public const int DECK_LAYER = 12;
-        public static List<GameObject> PlayPieces;
+
         public static bool IsInputGathererActive { get; set; }
 
         public static byte NetworkIdCounter { get; set; }
@@ -33,15 +33,6 @@ namespace HarryPotterUnity.Game
         public static List<GameObject> Debug_Player2Deck { private get; set; }
         public static GameObject Debug_Player1StartingCharacter { private get; set; }
         public static GameObject Debug_Player2StartingCharacter { private get; set; }
-
-        public static PlayPiece findpieceId(byte networkId)
-        {
-            foreach(GameObject o in PlayPieces)
-            {
-                if (o.GetComponent<PlayPiece>()._networkId == networkId) return o.GetComponent<PlayPiece>();
-            }
-            return null;
-        }
 
         public static List<BaseCard> GetPlayerTestDeck(int playerId)
         {

@@ -193,30 +193,19 @@ namespace HarryPotterUnity.Cards
         public void OnMouseUp()
         {
             //static booleans screw up when you exit the game lol
-            Debug.Log("moused up!");
-            if (stillOnCard == false) return; //Do call OnMouseDown if cursor has left the object
-            
+            //if this card is not yours you can't highlight it silly
+            if (stillOnCard == false || GameManager.IsInputGathererActive) return; //Do call OnMouseDown if cursor has left the object
+            //Player clicked on this card as a target, not to activate its effect.
 
-            if (GameManager.IsInputGathererActive) return; //Player clicked on this card as a target, not to activate its effect.
-            if (highlighted == true )//&& clicked on empty PlayField)
+            if (highlighted && _outline.activeSelf == true)
             {
-         //       GameManager.AllCards.SetActive(false);
-           //     _outline.SetActive(true);
-                return;
-            }
-            if (_outline.activeSelf == true)
-            {
-                //_inputGatherer.GatherInput(InputGatherMode.FromHandAction);
-
-                //if true, move to specific location, indicated by card, set parent
-                _outline.SetActive(false);
                 highlighted = false;
+                _outline.SetActive(false);
             }
-            else
+            else if(!highlighted)
             {
                 _outline.SetActive(true);
                 highlighted = true;
-                //GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
             }
 
         }

@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3398166}
   - 64: {fileID: 6402558}
   - 23: {fileID: 2314078}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 33: {fileID: 3377438}
   - 64: {fileID: 6446096}
   - 23: {fileID: 2364136}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +44,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422330}
-  - 114: {fileID: 11418628}
-  - 114: {fileID: 11475134}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: AlbusDumbledore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,34 +182,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11418628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184820}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8c282e6a0d71d846b4ff50d62c7ae89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maximumAmountAllowed: 1
---- !u!114 &11475134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184820}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880e64ee0961e8844be1d9d75716fc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _classification: 6
-  _rarity: 2
-  _tags: 1
-  parentToReturnTo: {fileID: 0}
-  placeholderParent: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

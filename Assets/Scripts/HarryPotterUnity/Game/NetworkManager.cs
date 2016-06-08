@@ -34,9 +34,6 @@ namespace HarryPotterUnity.Game
             _menuManager = FindObjectOfType<MenuManager>();
             _allMenuScreens = FindObjectsOfType<BaseMenu>().ToList();
 
-            gameBackground = GameObject.FindWithTag("GameBackground");
-            gameBackground.SetActive(false);
-
             GameManager.Network = photonView;
 
             PhotonNetwork.ConnectUsingSettings(LOBBY_VERSION);

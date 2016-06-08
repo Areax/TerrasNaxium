@@ -111,9 +111,11 @@ namespace HarryPotterUnity.Game
         {
             foreach(var card in Cards)
             {
+                Debug.Log("A card made it to the highlight station");
                 if (card.isHighlight())
                     return card;
             }
+            Debug.Log("no card highlighted");
             return null;
         }
 

@@ -4,8 +4,6 @@ using HarryPotterUnity.Cards;
 using HarryPotterUnity.Enums;
 using HarryPotterUnity.Tween;
 using UnityEngine;
-using UnityLogWrapper;
-using Random = UnityEngine.Random;
 
 namespace HarryPotterUnity.Game
 {
@@ -19,8 +17,6 @@ namespace HarryPotterUnity.Game
         public GameObject image;
 
 
-        private readonly Vector2 _playFieldOffset = new Vector2(0f, 0f);
-
         public BaseCard card;
 
         private void Awake()
@@ -28,8 +24,8 @@ namespace HarryPotterUnity.Game
             _player = transform.GetComponentInParent<Player>();
             var col = gameObject.AddComponent<BoxCollider>();
             col.isTrigger = true;
-            col.size = new Vector3(50f, 70f, 1f);
-            col.center = new Vector3(_playFieldOffset.x, _playFieldOffset.y, 0f);
+            col.size = new Vector3(50f, 70f, .2f);
+            col.center = transform.position;
         }
         
 
@@ -39,22 +35,52 @@ namespace HarryPotterUnity.Game
             return true;
         }
 
+        private bool hasSomething = false;
+
+        public bool HasSomething()
+        {
+            //if has child, return true :)
+            return hasSomething ? true : false;
+        }
+
         private void OnMouseUp()
         {
             //if highlight is set to true, find the highlighted card and move the position
             //call add function
+            Debug.Log("playpiecemousingup");
+            Debug.Log(active + "" + BaseCard.highlighted);
             if (active == true && BaseCard.highlighted == true)
             {
                 card = _player.Hand.FindHighlighted();
+                Debug.Log("card" + card);
                 if(card != null)
                 {
-                    Debug.Log(card);
                     Add(card);
                     GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, _networkId);
 
                 }
                 
             }
+
+            if (BaseCard.highlighted == true)//&& clicked on empty PlayField)
+            {
+                return;
+            }
+            if (HasSomething())
+            {
+                //????
+                //stop the clicking of objects
+
+                //_inputGatherer.GatherInput(InputGatherMode.FromHandAction);
+
+                //if true, move to specific location, indicated by card, set parent
+            }
+            else
+            {
+                //allow card to come :D
+                //GameManager.Network.RPC("ExecutePlayActionById", PhotonTargets.All, NetworkId);
+            }
+
         }
 
         private bool active = false;
@@ -87,14 +113,12 @@ namespace HarryPotterUnity.Game
             Cards.Insert(0, card);
 
             card.transform.parent = transform;
-
-            var cardPos = new Vector3(_playFieldOffset.x, _playFieldOffset.y, -16f);
-            cardPos.z -= Cards.IndexOf(card) * 0.2f;
+            Debug.Log("moving card from PlayPiece");
 
             var tween = new MoveTween
             {
                 Target = card.gameObject,
-                Position = cardPos,
+                Position = transform.parent.position + Vector3.back * 1.5f,
                 Time = 0.25f,
                 Flip = FlipState.FaceUp,
                 Rotate = TweenRotationType.NoRotate,

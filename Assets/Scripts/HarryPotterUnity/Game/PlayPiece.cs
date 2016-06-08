@@ -131,7 +131,11 @@ namespace HarryPotterUnity.Game
             GameManager.TweenQueue.AddTweenToQueue(tween);
         }
 
+<<<<<<< HEAD
         public void Add(BaseCard card, PlayPiece field)
+=======
+        public void HandtoField(BaseCard card, PlayPiece field)
+>>>>>>> origin/Testing
         {
             if (card == null) return;
 

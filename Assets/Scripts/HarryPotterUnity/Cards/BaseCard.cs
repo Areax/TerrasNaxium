@@ -193,18 +193,30 @@ namespace HarryPotterUnity.Cards
             //if this card is not yours you can't highlight it silly
             if (stillOnCard == false || GameManager.IsInputGathererActive) return; //Do call OnMouseDown if cursor has left the object
             //Player clicked on this card as a target, not to activate its effect.
+            if (FlipState == FlipState.FaceDown) return;
+            //if (FlipState == FlipState.FaceDown) return;
 
             if (highlighted && _outline.activeSelf == true)
             {
                 highlighted = false;
                 _outline.SetActive(false);
+                GameManager.curHi = null;
             }
-            else if(!highlighted)
+            else if (!highlighted)
             {
                 _outline.SetActive(true);
                 highlighted = true;
+                GameManager.curHi = this;
             }
+            else if (highlighted && GameManager.curHi.Player != Player && IsCreature())
+                    GetComponent<BaseCreature>().TakeDamage(GameManager.curHi.GetComponent<BaseCreature>().Attack);
 
+        }
+
+        private bool IsCreature()
+        {
+            if (this is BaseCreature) return true;
+            return false;
         }
 
         private bool IsActivatable()

@@ -122,7 +122,7 @@ namespace HarryPotterUnity.UI.Menu
 
         private void Start()
         {
-            _skipActionButton.interactable = false;
+            //_skipActionButton.interactable = false;
         }
 
         protected override void Update()
@@ -149,10 +149,11 @@ namespace HarryPotterUnity.UI.Menu
         {
             var player = LocalPlayer.CanUseActions() ? LocalPlayer : RemotePlayer;
 
-            if (player.ActionsAvailable == 1)
+            /*if (player.ActionsAvailable == 1)
             {
                 _skipActionButton.interactable = false;
-            }
+            }*/
+            //if opponent's board is empty, you win!
 
             GameManager.Network.RPC("ExecuteSkipAction", PhotonTargets.All);
         }

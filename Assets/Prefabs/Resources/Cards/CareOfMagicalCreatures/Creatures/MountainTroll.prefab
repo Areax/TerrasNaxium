@@ -63,6 +63,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 7}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 440260}
   m_RootOrder: 0
@@ -75,6 +76,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 439080}
   - {fileID: 459598}
@@ -89,6 +91,7 @@ Transform:
   m_LocalRotation: {x: -0.005085917, y: 0.7070885, z: -0.70708853, w: 0.0050860024}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 7}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 440260}
   m_RootOrder: 1
@@ -207,10 +210,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _classification: 0
-  _rarity: 1
-  Tags: 
-  _damagePerTurn: 4
+  _tags: 0
+  parentToReturnTo: {fileID: 0}
+  placeholderParent: {fileID: 0}
+  _attack: 5
   _health: 4
+  _speed: 0
+  _armor: 0
 --- !u!114 &11459026
 MonoBehaviour:
   m_ObjectHideFlags: 1

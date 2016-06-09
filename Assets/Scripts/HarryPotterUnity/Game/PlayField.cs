@@ -8,6 +8,7 @@ using System.Linq;
 using UnityLogWrapper;
 using Random = UnityEngine.Random;
 
+
 namespace HarryPotterUnity.Game
 {
     public class PlayField: MonoBehaviour
@@ -51,6 +52,15 @@ namespace HarryPotterUnity.Game
             foreach(GameObject ob in PlayPieces)
             {
                 if (ob.GetComponent<PlayPiece>()._networkId == networkid) return ob.GetComponent<PlayPiece>();
+            }
+            return null;
+        }
+
+        public BaseCard findHighlighted()
+        {
+            foreach(GameObject ob in PlayPieces)
+            {
+                if (ob.GetComponent<PlayPiece>().card.isHighlight()) return ob.GetComponent<PlayPiece>().card;
             }
             return null;
         }
@@ -101,7 +111,7 @@ namespace HarryPotterUnity.Game
             field.Cards.Insert(0, card);
 
             card.transform.parent = field.transform;
-            Debug.Log("moving card from PlayPiece");
+
 
             var tween = new MoveTween
             {

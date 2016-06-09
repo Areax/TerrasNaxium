@@ -47,12 +47,9 @@ namespace HarryPotterUnity.Game
         {
             //if highlight is set to true, find the highlighted card and move the position
             //call add function
-            Debug.Log("playpiecemousingup");
-            Debug.Log(active + "" + BaseCard.highlighted);
             if (active == true && BaseCard.highlighted == true)
             {
                 card = _player.Hand.FindHighlighted();
-                Debug.Log("card" + card);
                 if(card != null)
                 {
                     Add(card);

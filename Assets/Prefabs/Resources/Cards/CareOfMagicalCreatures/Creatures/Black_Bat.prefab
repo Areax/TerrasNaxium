@@ -222,12 +222,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _classification: 0
-  _rarity: 0
   _tags: 0
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
-  _damagePerTurn: 2
+  _attack: 10
   _health: 1
+  _speed: 0
+  _armor: 0
   _battlecryDamage: 2
 --- !u!1001 &100100000
 Prefab:

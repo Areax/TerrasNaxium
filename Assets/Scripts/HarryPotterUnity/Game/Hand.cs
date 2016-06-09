@@ -50,9 +50,12 @@ namespace HarryPotterUnity.Game
                 GameManager.AllCards.Add(Cards[i]);
 
                 Cards[i].CurrentCollection = this;
+                PreHandSpacing(Cards[i]);
             }
             AdjustHandSpacing();
         }
+
+
     public void Add(BaseCard card, bool preview, bool adjustSpacing)
         {
             if (adjustSpacing) AdjustHandSpacing();
@@ -71,6 +74,8 @@ namespace HarryPotterUnity.Game
 
             MoveToThisCollection(card);
         }
+
+
         
         public override void AddAll(IEnumerable<BaseCard> cards)
         {
@@ -92,6 +97,8 @@ namespace HarryPotterUnity.Game
             AdjustHandSpacing();
         }
 
+
+
         protected override void RemoveAll(IEnumerable<BaseCard> cardsToRemove)
         {
             foreach (var card in cardsToRemove)
@@ -111,7 +118,6 @@ namespace HarryPotterUnity.Game
         {
             foreach(var card in Cards)
             {
-                Debug.Log("A card made it to the highlight station");
                 if (card.isHighlight())
                     return card;
             }
@@ -119,9 +125,25 @@ namespace HarryPotterUnity.Game
             return null;
         }
 
+        public void PreHandSpacing(BaseCard card)
+        {
+            var flipState = _player.IsLocalPlayer ? FlipState.FaceUp : FlipState.FaceDown;
+            var finalTween = new MoveTween
+            {
+                Target = card.gameObject,
+                Position = card.transform.position,
+                Time = 0f,
+                Delay = 0f,
+                Flip = flipState,
+                Rotate = TweenRotationType.NoRotate,
+                OnCompleteCallback = () => card.State = State.InHand
+            };
+            GameManager.TweenQueue.AddTweenToQueue(finalTween);
+        }
 
         public void AdjustHandSpacing()
         {
+
             var tween = new AsyncMoveTween
             {
                 Targets = Cards,

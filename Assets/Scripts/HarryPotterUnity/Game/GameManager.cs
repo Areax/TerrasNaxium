@@ -19,7 +19,7 @@ namespace HarryPotterUnity.Game
 
         public static byte NetworkIdCounter { get; set; }
 
-        public static readonly List<BaseCard> AllCards = new List<BaseCard>();
+        public static readonly List<BaseCard> AllCards = new List<BaseCard>(); 
 
         public static readonly PreviewCamera PreviewCamera = GameObject.Find("Preview Camera").GetComponent<PreviewCamera>();
 
@@ -33,6 +33,8 @@ namespace HarryPotterUnity.Game
         public static List<GameObject> Debug_Player2Deck { private get; set; }
         public static GameObject Debug_Player1StartingCharacter { private get; set; }
         public static GameObject Debug_Player2StartingCharacter { private get; set; }
+        public static BaseCard curHi { get; set; }
+
 
         public static List<BaseCard> GetPlayerTestDeck(int playerId)
         {

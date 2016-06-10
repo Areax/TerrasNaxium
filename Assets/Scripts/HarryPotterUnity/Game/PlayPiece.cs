@@ -18,6 +18,7 @@ namespace HarryPotterUnity.Game
 
 
         public BaseCard card;
+        public BaseCard child;
 
         private void Awake()
         {
@@ -31,8 +32,8 @@ namespace HarryPotterUnity.Game
 
         public bool HaveCreature()
         {
-            //has or doesn't have creature
-            return true;
+            if (child is BaseCreature) return true;
+            return false;
         }
 
         private bool hasSomething = false;

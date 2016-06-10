@@ -4237,21 +4237,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enableDebugMode: 1
   _player1Deck:
-  - {fileID: 191304, guid: ce4e9fe5ed7c0684299461122a3913a0, type: 2}
-  - {fileID: 121778, guid: f6889224e0b1df84a85f5837222193d7, type: 2}
-  - {fileID: 163272, guid: cf614697aeb3c164aa848c9f0520d35e, type: 2}
-  - {fileID: 100000, guid: ea7b9519fc9be3e4dab09516bd46a3ed, type: 2}
-  - {fileID: 142180, guid: 62ede7e32886a274093c265d6890648b, type: 2}
-  - {fileID: 100000, guid: ea7b9519fc9be3e4dab09516bd46a3ed, type: 2}
-  - {fileID: 179742, guid: 8edb7905759f2794296219a4cf68218d, type: 2}
+  - {fileID: 111346, guid: 02d99af35fca85045afef6ae30d84290, type: 2}
+  - {fileID: 106610, guid: 3ab626a181870ed4ba35d2a7d3792359, type: 2}
+  - {fileID: 178742, guid: 3d9de3e0c3b64064997216583cd25354, type: 2}
+  - {fileID: 179930, guid: 19453992a24f7694c944e8f505b4b98a, type: 2}
+  - {fileID: 115228, guid: 6a8438411675e544faa989b4eaf73e5c, type: 2}
+  - {fileID: 100000, guid: 1b10ecf9c77077e4790bf0a3737074a4, type: 2}
+  - {fileID: 170276, guid: 34fb7fde162c7d5459f911d583d31a2d, type: 2}
   _player2Deck:
-  - {fileID: 100000, guid: ea7b9519fc9be3e4dab09516bd46a3ed, type: 2}
-  - {fileID: 166244, guid: 6141c5aae229585498764befa032616b, type: 2}
-  - {fileID: 179742, guid: 8edb7905759f2794296219a4cf68218d, type: 2}
-  - {fileID: 151274, guid: 7bfc1561061ee8542be7a4bceca9e2c7, type: 2}
-  - {fileID: 151274, guid: 7bfc1561061ee8542be7a4bceca9e2c7, type: 2}
-  - {fileID: 118722, guid: 5869fb7eedfec63448d88752caa34328, type: 2}
-  - {fileID: 187748, guid: 06e39efbe29a8df4496121936ec30ea5, type: 2}
+  - {fileID: 147564, guid: 32da9f9bd718c494ca96147d00b05074, type: 2}
+  - {fileID: 156458, guid: 367e84b096d32bd438857704ab572824, type: 2}
+  - {fileID: 100000, guid: 91949151edcdd5e47b1851aa8bcbd3d4, type: 2}
+  - {fileID: 100004, guid: aadf26746bd02bb41a6438361dae64a9, type: 2}
+  - {fileID: 120504, guid: 7005c58a99f17504db87d68bd96947ba, type: 2}
+  - {fileID: 176890, guid: 1c9db2a21064a8c4094c548d347eb5de, type: 2}
+  - {fileID: 128022, guid: 82dba836d2d823a498b44a3979955bbb, type: 2}
 --- !u!4 &1413583626
 Transform:
   m_ObjectHideFlags: 0

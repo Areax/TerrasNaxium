@@ -147,13 +147,15 @@ namespace HarryPotterUnity.UI.Menu
         [UsedImplicitly]
         public void SkipAction()
         {
-            var player = LocalPlayer.CanUseActions() ? LocalPlayer : RemotePlayer;
+            //var player = LocalPlayer.CanUseActions() ? LocalPlayer : RemotePlayer;
 
             /*if (player.ActionsAvailable == 1)
             {
                 _skipActionButton.interactable = false;
             }*/
             //if opponent's board is empty, you win!
+            //LOL This only will wokr if we go through the RPC because the local player has no idea what the other player has
+            if (_remotePlayer.PlayField.NoCreatures()) Debug.Log("LOCAL PLAYER WINS!");
 
             GameManager.Network.RPC("ExecuteSkipAction", PhotonTargets.All);
         }

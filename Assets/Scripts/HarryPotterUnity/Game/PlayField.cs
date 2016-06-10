@@ -111,7 +111,7 @@ namespace HarryPotterUnity.Game
             field.Cards.Insert(0, card);
 
             card.transform.parent = field.transform;
-
+            field.child = card;
 
             var tween = new MoveTween
             {
@@ -148,9 +148,13 @@ namespace HarryPotterUnity.Game
             return inst;
         }
         
-        private bool NoCreatures()
+        public bool NoCreatures()
         {
-            //TODO if no creatures and there is no card being played, left school is discarded
+            foreach(GameObject o in PlayPieces)
+            {
+                if (o.GetComponent<PlayPiece>().HaveCreature()) return false;
+                Debug.Log("this isn't a card");
+            }
             return true;
         }
         

@@ -38,4 +38,5 @@ MonoBehaviour:
   - ExecuteInPlayActionById
   - ExecuteInPlayInputCardById
   - ExecutePlayCardToField
+  - ExecuteFieldToDiscard
   DisableAutoOpenWizard: 1

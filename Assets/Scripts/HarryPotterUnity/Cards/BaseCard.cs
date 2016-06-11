@@ -23,7 +23,7 @@ namespace HarryPotterUnity.Cards
         [Header("Deck Generation Options")]
         [SerializeField, UsedImplicitly]
         private ClassificationTypes _classification;
-
+        
         [Header("Card Settings")]
         [SerializeField, EnumFlags]
         [UsedImplicitly]

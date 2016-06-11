@@ -10,8 +10,13 @@ namespace HarryPotterUnity.Game
 {
     public class Discard : CardCollection
     {
+        private Player _player; 
         private static readonly Vector2 _discardPositionOffset = new Vector2(-355f, -30f);
 
+        private void Awake()
+        {
+            _player = transform.GetComponentInParent<Player>();
+        }
         private void Start ()
         {
             Cards = new List<BaseCard>();
@@ -24,6 +29,8 @@ namespace HarryPotterUnity.Game
 
         public override void Add(BaseCard card) 
         {
+            if (card == null) return;
+            GameManager.Network.RPC("ExecuteFieldToDiscard", PhotonTargets.All, _player.NetworkId, card.NetworkId);
             Cards.Add(card);
             card.Enable();
             
@@ -56,6 +63,44 @@ namespace HarryPotterUnity.Game
 
             GameManager.TweenQueue.AddTweenToQueue( previewTween );
             GameManager.TweenQueue.AddTweenToQueue( finalTween );
+
+            MoveToThisCollection(card);
+        }
+
+        public void NetworkAdd(BaseCard card)
+        {
+            Cards.Add(card);
+            card.Enable();
+
+            card.transform.parent = transform;
+
+            var cardPos = GetTargetPositionForCard(card);
+
+            Vector3 cardPreviewPos = cardPos;
+            cardPreviewPos.z -= 20f;
+
+            var previewTween = new MoveTween
+            {
+                Target = card.gameObject,
+                Position = cardPreviewPos,
+                Time = 0.35f,
+                Flip = FlipState.FaceUp,
+                Rotate = TweenRotationType.NoRotate,
+                OnCompleteCallback = () => card.State = State.Discarded
+            };
+
+            var finalTween = new MoveTween
+            {
+                Target = card.gameObject,
+                Position = cardPos,
+                Time = 0.25f,
+                Flip = FlipState.FaceUp,
+                Rotate = TweenRotationType.NoRotate,
+                OnCompleteCallback = () => card.State = State.Discarded
+            };
+
+            GameManager.TweenQueue.AddTweenToQueue(previewTween);
+            GameManager.TweenQueue.AddTweenToQueue(finalTween);
 
             MoveToThisCollection(card);
         }

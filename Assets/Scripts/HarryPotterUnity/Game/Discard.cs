@@ -26,7 +26,6 @@ namespace HarryPotterUnity.Game
         {
             Cards.Add(card);
             card.Enable();
-            
             card.transform.parent = transform;
 
             var cardPos = GetTargetPositionForCard(card);

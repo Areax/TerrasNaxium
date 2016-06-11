@@ -20,118 +20,14 @@ Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\Photon3Unity3D
 Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
 Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\Unity-Debug-Log-Wrapper.dll (this message is harmless)
 Loading T:\GitHub Games\TerrasNaxium\test_Data\Managed\Unity-Debug-Log-Wrapper.dll into Unity Child Domain
-- Completed reload, in  0.066 seconds
+- Completed reload, in  0.068 seconds
 Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: T:\GitHub Games\TerrasNaxium\test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-The referenced script on this Behaviour (Game Object 'Tabletop') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Card') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Card') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Tabletop (2)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Card (1)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Hand') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Card (2)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Hand') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Tabletop (2)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Tabletop') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Card (2)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Card (1)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Tabletop (1)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'Tabletop (1)') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-The referenced script on this Behaviour (Game Object 'NaxCard') is missing!
- 
-(Filename:  Line: 1655)
-
-UnloadTime: 1.140577 ms
+UnloadTime: 1.873911 ms
 Initialize Log
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
@@ -148,6 +44,10 @@ Joined Photon Room, Waiting for Players...
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
+New Player has Connected, Starting Game...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
 Recursive Serialization is not supported. You can't dereference a PPtr while loading. (Constructors of C# classes may not load objects either eg. EditorGUIUtility.TextContent should be moved to OnEnable. See stacktrace.)
  
 (Filename:  Line: 1112)
@@ -156,183 +56,11 @@ Generating Player Decks
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at iTween.RetrieveArgs () [0x00000] in <filename unknown>:0 
-  at iTween.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.Object:Internal_CloneSingle(Object)
-UnityEngine.Object:Instantiate(BaseCard)
-HarryPotterUnity.Game.Hand:Initialize(IEnumerable`1)
-HarryPotterUnity.Game.Player:DrawInitialHand()
-HarryPotterUnity.Game.Player:InitDeck(List`1)
-HarryPotterUnity.Game.NetworkManager:InitPlayerDecks()
-HarryPotterUnity.Game.NetworkManager:StartGameRpc(Int32)
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
 Game setup complete, starting match
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+moving card from PlayPiece
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
@@ -340,10 +68,86 @@ Player 1 Plays a Card
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
+moving card from PlayPiece
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 1 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 2 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 2 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 2 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+moving card from PlayPiece
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 1 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 2 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+no card highlighted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+no card highlighted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 2 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+no card highlighted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 2 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+no card highlighted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+no card highlighted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player 2 Plays a Card
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Opponent Disconnected, Back to Main Menu...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
 Player Disconnected, Back to Main Menu
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
+Connected to Photon Master Server
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Joined v0.2-dev Lobby
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 5d8c -> priority: 1 
-  Thread -> id: 3984 -> priority: 1 
+  Thread -> id: 24e0 -> priority: 1 
+  Thread -> id: 2824 -> priority: 1 

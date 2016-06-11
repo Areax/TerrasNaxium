@@ -15,8 +15,7 @@ namespace HarryPotterUnity.Game
         public byte _networkId { get; set; }
 
         public GameObject image;
-
-
+        
         public BaseCard card;
         public BaseCard child;
 

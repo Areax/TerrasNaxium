@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace HarryPotterUnity.Cards
 {
     public class BaseCreature : BaseCard, IPersistentCard {
-
+        
         [Header("Creature Settings")]
         [SerializeField, UsedImplicitly]
         protected int _attack;
@@ -67,7 +67,7 @@ namespace HarryPotterUnity.Cards
         {
             _uiCanvas.SetActive(false);
         }
-
+        
         public void TakeDamage(int amount)
         {
             _health -= amount;
@@ -76,13 +76,13 @@ namespace HarryPotterUnity.Cards
             if (_health <= 0)
             {
                 Player.Discard.Add(this);
+
             }
         }
 
         public void Heal(int amount)
         {
             _health = Mathf.Clamp(_health + amount, 0, Health);
-
             _healthLabel.text = _health.ToString();
         }
 

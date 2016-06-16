@@ -67,6 +67,7 @@ namespace HarryPotterUnity.Game
 
         private void Awake()
         {
+            Instance = Resources.Load("AlbusDumbledore") as GameObject;
             _player = transform.GetComponentInParent<Player>();
             var col = gameObject.AddComponent<BoxCollider>();
             col.isTrigger = true;
@@ -93,6 +94,8 @@ namespace HarryPotterUnity.Game
             BM.name = "BM";
             BR = createPiece(_playPieceBR);
             BR.name = "BR";*/
+
+            
         }
 
         public void PiecetoList(GameObject ob, Vector3 area)
@@ -127,7 +130,7 @@ namespace HarryPotterUnity.Game
         }
 
 
-        private GameObject Instance = Resources.Load("AlbusDumbledore") as GameObject;
+        private GameObject Instance;
 
         private GameObject createPiece(Vector3 area)
         {

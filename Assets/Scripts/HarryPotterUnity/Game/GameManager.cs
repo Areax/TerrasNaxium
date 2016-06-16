@@ -4,6 +4,7 @@ using HarryPotterUnity.Cards;
 using HarryPotterUnity.Tween;
 using HarryPotterUnity.UI.Camera;
 using UnityEngine;
+using HarryPotterUnity.Enums;
 
 namespace HarryPotterUnity.Game
 {
@@ -19,14 +20,16 @@ namespace HarryPotterUnity.Game
 
         public static byte NetworkIdCounter { get; set; }
 
-        public static readonly List<BaseCard> AllCards = new List<BaseCard>(); 
+        public static readonly List<BaseCard> AllCards = new List<BaseCard>();
 
         public static readonly PreviewCamera PreviewCamera = GameObject.Find("Preview Camera").GetComponent<PreviewCamera>();
 
         public static readonly TweenQueue TweenQueue = new TweenQueue();
 
         public static PhotonView Network { get; set; }
-        
+
+        public static Phase Phase { get; set; }
+
         public static bool DebugModeEnabled { get; set; }
 
         public static List<GameObject> Debug_Player1Deck { private get; set; }
@@ -34,7 +37,6 @@ namespace HarryPotterUnity.Game
         public static GameObject Debug_Player1StartingCharacter { private get; set; }
         public static GameObject Debug_Player2StartingCharacter { private get; set; }
         public static BaseCard curHi { get; set; }
-
 
         public static List<BaseCard> GetPlayerTestDeck(int playerId)
         {
@@ -63,5 +65,7 @@ namespace HarryPotterUnity.Game
 
             return obj.GetComponent<BaseCard>();
         }
+
+        
     }
 }

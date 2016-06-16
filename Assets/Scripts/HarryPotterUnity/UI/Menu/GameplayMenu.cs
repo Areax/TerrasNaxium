@@ -22,7 +22,7 @@ namespace HarryPotterUnity.UI.Menu
             {
                 _localPlayer = value;
 
-                _localPlayer.OnTurnStart += () =>
+                /*_localPlayer.OnTurnStart += () =>
                 {
                     _actionsLeftLabelLocal.GetComponent<Animator>().SetBool("IsOpen", true);
                     _skipActionButton.interactable = true;
@@ -32,7 +32,7 @@ namespace HarryPotterUnity.UI.Menu
                 {
                     _actionsLeftLabelLocal.GetComponent<Animator>().SetBool("IsOpen", false);
                     _skipActionButton.interactable = false;
-                };
+                };*/
                 
                 _localPlayer.InPlay.OnCardEnteredPlay += card =>
                 {
@@ -84,6 +84,8 @@ namespace HarryPotterUnity.UI.Menu
         private Text _cardsLeftLabelLocal;
         private Text _cardsLeftLabelRemote;
 
+        private Text curPhase;
+
         private Button _skipActionButton;
 
         private Text _mainMenuTitle;
@@ -106,6 +108,8 @@ namespace HarryPotterUnity.UI.Menu
             _cardsLeftLabelLocal = allText.FirstOrDefault(t => t.name.Contains("CardsLeftLabel_Local"));
             _cardsLeftLabelRemote = allText.FirstOrDefault(t => t.name.Contains("CardsLeftLabel_Remote"));
 
+            curPhase = allText.FirstOrDefault(t => t.name.Contains("CurPhase"));
+
             _skipActionButton = FindObjectsOfType<Button>().FirstOrDefault(b => b.name.Contains("SkipActionButton"));
 
             if (_actionsLeftLabelLocal  == null || 
@@ -114,6 +118,7 @@ namespace HarryPotterUnity.UI.Menu
                 _cardsLeftLabelRemote   == null || 
                 _mainMenuTitle          == null || 
                 _mainMenuBackground     == null ||
+                curPhase                == null ||
                 _skipActionButton       == null)
             {
                 Log.Error("Could not find all needed HUD elements in gameplay menu, report this error!");
@@ -123,6 +128,7 @@ namespace HarryPotterUnity.UI.Menu
         private void Start()
         {
             //_skipActionButton.interactable = false;
+            GameManager.Phase = Phase.Placement;
         }
 
         protected override void Update()
@@ -156,7 +162,9 @@ namespace HarryPotterUnity.UI.Menu
             //if opponent's board is empty, you win!
             //LOL This only will wokr if we go through the RPC because the local player has no idea what the other player has
             if (_remotePlayer.PlayField.NoCreatures()) Debug.Log("LOCAL PLAYER WINS!");
-
+            if (GameManager.Phase == Phase.EndTurn) GameManager.Phase = Phase.Placement;
+            else GameManager.Phase++;
+            curPhase.text = GameManager.Phase.ToString();
             GameManager.Network.RPC("ExecuteSkipAction", PhotonTargets.All);
         }
 

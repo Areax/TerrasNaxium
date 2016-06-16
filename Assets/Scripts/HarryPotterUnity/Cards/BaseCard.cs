@@ -208,7 +208,7 @@ namespace HarryPotterUnity.Cards
                 highlighted = true;
                 GameManager.curHi = this;
             }
-            else if (highlighted && GameManager.curHi.Player != Player && IsCreature())
+            else if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase == Phase.Attack)
                     GetComponent<BaseCreature>().TakeDamage(GameManager.curHi.GetComponent<BaseCreature>().Attack);
 
         }

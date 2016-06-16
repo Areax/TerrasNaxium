@@ -23,7 +23,5 @@ namespace HarryPotterUnity.Cards
         public virtual void OnInPlayAction(List<BaseCard> targets = null) { }
         public virtual void OnInPlayBeforeTurnAction() { }
         public virtual void OnInPlayAfterTurnAction() { }
-        public virtual void OnEnterInPlayAction() { }
-        public virtual void OnExitInPlayAction() { }
     }
 }

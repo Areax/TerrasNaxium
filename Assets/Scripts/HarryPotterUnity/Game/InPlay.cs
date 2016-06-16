@@ -44,7 +44,6 @@ namespace HarryPotterUnity.Game
 
             MoveToThisCollection(card);
 
-            ((IPersistentCard) card).OnEnterInPlayAction();
 
             if (OnCardEnteredPlay != null) OnCardEnteredPlay(card);
         }
@@ -55,7 +54,6 @@ namespace HarryPotterUnity.Game
 
             RearrangeCardsOfType(card.Type);
 
-            ((IPersistentCard) card).OnExitInPlayAction();
 
             if (OnCardExitedPlay != null) OnCardExitedPlay(card);
         }
@@ -77,8 +75,6 @@ namespace HarryPotterUnity.Game
             foreach (var card in cardList)
             {
                 Cards.Remove(card);
-
-                ((IPersistentCard)card).OnExitInPlayAction();
 
                 if (OnCardExitedPlay != null) OnCardExitedPlay(card);
             }

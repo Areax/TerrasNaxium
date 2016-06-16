@@ -12,6 +12,11 @@ namespace HarryPotterUnity.Enums
         Lesson, Creature, Spell, Item, Location, Match, Adventure, Character
     }
 
+    public enum Phase
+    {
+        Placement, Preparation, Defense, Attack, Persistence, EndTurn
+    }
+
     [Flags]
     public enum Tag
     {

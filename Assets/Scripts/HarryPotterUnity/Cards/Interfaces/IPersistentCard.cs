@@ -10,8 +10,5 @@ namespace HarryPotterUnity.Cards.Interfaces
         bool CanPerformInPlayAction();
         //TODO: Default behavior for OnSelectedAction to preview the card before activating effect.
         void OnInPlayAction(List<BaseCard> targets = null); 
-
-        void OnEnterInPlayAction();
-        void OnExitInPlayAction();
     }
 }

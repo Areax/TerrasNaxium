@@ -9,11 +9,5 @@ namespace HarryPotterUnity.Cards.CareOfMagicalCreatures.Creatures
         [UsedImplicitly, SerializeField, Space(10)]
         private int _battlecryDamage;
 
-        public override void OnEnterInPlayAction()
-        {
-            base.OnEnterInPlayAction();
-
-            Player.OppositePlayer.TakeDamage(this, _battlecryDamage);
-        }
     }
 }

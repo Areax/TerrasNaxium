@@ -44,29 +44,19 @@ namespace HarryPotterUnity.Cards
         {
             var resource = Resources.Load("CreatureUIOverlay");
             _uiCanvas = (GameObject) Instantiate(resource);
-            
-            _uiCanvas.transform.position = transform.position - Vector3.back;
-            _uiCanvas.transform.SetParent(transform, true);
-            _uiCanvas.transform.localRotation = Player.IsLocalPlayer ? Quaternion.identity : Quaternion.Euler(0f,0f,180f);
 
+            _uiCanvas.transform.position = transform.position + Vector3.back + Vector3.up * 10;
+            _uiCanvas.transform.SetParent(transform, true);
+            _uiCanvas.transform.localRotation = Player.IsLocalPlayer ? Quaternion.Euler(0f,0f,270f) : Quaternion.Euler(0f,0f,90f);
             _healthLabel = _uiCanvas.transform.FindChild("HealthLabel").gameObject.GetComponent<Text>();
             _attackLabel = _uiCanvas.transform.FindChild("AttackLabel").gameObject.GetComponent<Text>();
 
             _healthLabel.text = _health.ToString();
             _attackLabel.text = Attack.ToString();
 
-            _uiCanvas.SetActive(false);
-        }
-        
-        public virtual void OnEnterInPlayAction()
-        {
             _uiCanvas.SetActive(true);
         }
-
-        public virtual void OnExitInPlayAction()
-        {
-            _uiCanvas.SetActive(false);
-        }
+        
         
         public void TakeDamage(int amount)
         {

@@ -137,6 +137,7 @@ namespace HarryPotterUnity.Game
             SetUpGameplayHud();
             InitPlayerDecks();
             BeginGame();
+            
         }
         
         private void SpawnPlayers()

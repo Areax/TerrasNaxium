@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using HarryPotterUnity.Cards;
 
 public class Arrow : MonoBehaviour
 {
      Vector3 pos1;
     Vector3 pos2;
     float objectHeight = 2.0f; // 2.0f for a cylinder, 1.0f for a cube
+    public bool movingarrow = false;
+    public int attack = 0;
 
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && movingarrow)
         {
             pos1 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane + 0.5f);
             pos1 = Camera.main.ScreenToWorldPoint(pos1);
             pos2 = pos1;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && movingarrow)
         {
             pos2 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane + 0.5f);
             pos2 = Camera.main.ScreenToWorldPoint(pos2);

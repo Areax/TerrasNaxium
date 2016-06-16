@@ -78,6 +78,7 @@ namespace HarryPotterUnity.Game
 
         public void Awake()
         {
+            nextTurn = true;
             ActionsAvailable = 0;
 
             Hand = transform.GetComponentInChildren<Hand>();
@@ -96,7 +97,7 @@ namespace HarryPotterUnity.Game
         {
             prebuiltCards = GameManager.GetPlayerTestDeck(NetworkId);
             List<BaseCard> cards;
-            BaseCard startingCharacter;
+
 
             if (GameManager.DebugModeEnabled)
             {
@@ -108,7 +109,7 @@ namespace HarryPotterUnity.Game
             else
             {
                 cards = DeckGenerator.GenerateDeck(selectedLessons);
-                startingCharacter = DeckGenerator.GetRandomCharacter();
+
             }
 
             //Deck.Initialize( cards, startingCharacter);
@@ -121,16 +122,7 @@ namespace HarryPotterUnity.Game
         /// such as drawing the opponent's card and dealing his creature's damage before your card's effect activates.
         /// </summary>
         /// <param name="amount"></param>
-        public void UseActions(int amount = 1)
-        {
-            ActionsAvailable -= amount;
-            if (ActionsAvailable <= 0) EndTurn(); 
-        }
-        
-        public void AddActions(int amount)
-        {
-            ActionsAvailable += amount;
-        }
+       
 
         public void InvokeCardPlayedEvent(BaseCard card, List<BaseCard> targets = null)
         {
@@ -186,9 +178,21 @@ namespace HarryPotterUnity.Game
             OppositePlayer.BeginTurn();
         }
 
+        private bool nextTurn;
+        //here are all skip sequences
+        public void UseActions(int amount = 1)
+        {
+            nextTurn = false;
+        }
+
+        public void AddActions(int amount)
+        {
+            nextTurn = true;
+        }
+
         public bool CanUseActions(int amount = 1)
         {
-            return ActionsAvailable >= amount;
+            return nextTurn;
         }
 
 

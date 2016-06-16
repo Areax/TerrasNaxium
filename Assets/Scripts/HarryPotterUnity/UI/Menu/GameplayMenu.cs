@@ -164,7 +164,20 @@ namespace HarryPotterUnity.UI.Menu
             if (_remotePlayer.PlayField.NoCreatures()) Debug.Log("LOCAL PLAYER WINS!");
             if (GameManager.Phase == Phase.EndTurn) GameManager.Phase = Phase.Placement;
             else GameManager.Phase++;
+            if (GameManager.Phase == Phase.Persistence)
+            {
+                var arrows = GameObject.FindGameObjectsWithTag("Arrow"); //kill all those dang cylinders :)
+                foreach(GameObject ob in arrows)
+                {
+                    var par_ob = ob.transform.parent;
+                    par_ob.GetComponent<BaseCreature>().TakeDamage(ob.GetComponent<Arrow>().attack);
+                    Destroy(ob);
+                }
+            }
+            
             curPhase.text = GameManager.Phase.ToString();
+            //_localPlayer.UseActions();
+            //_skipActionButton.enabled = false;
             GameManager.Network.RPC("ExecuteSkipAction", PhotonTargets.All);
         }
 

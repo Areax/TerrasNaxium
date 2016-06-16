@@ -69,6 +69,7 @@ namespace HarryPotterUnity.Cards
         private GameObject _cardFace;
         private GameObject _outline;
         private GameObject _highlight;
+        private GameObject arrow;
 
         private List<ICardPlayRequirement> PlayRequirements { get; set; }
 
@@ -171,6 +172,7 @@ namespace HarryPotterUnity.Cards
 
         private bool stillOnCard = false;
         public static bool highlighted = false;
+        public bool noCylinder = true;
 
         public void OnMouseOver()
         {
@@ -187,30 +189,64 @@ namespace HarryPotterUnity.Cards
             return _outline.activeSelf ? true : false;
         }
 
+        public void OnMouseDown()
+        {
+            if (noCylinder && isHighlight() && GameManager.Phase == Phase.Attack && transform.parent.GetComponent<PlayPiece>() != null)
+            {
+                noCylinder = false;
+                CreateCylinder();
+            }
+
+            if (arrow != null && isHighlight() && stillOnCard)
+                arrow.GetComponent<Arrow>().movingarrow = true;
+
+        }
+
+        public void CreateCylinder()
+        {
+            arrow = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            arrow.AddComponent<Arrow>();
+            arrow.transform.localScale = new Vector3(.005f, 1f, .005f);
+            arrow.tag = "Arrow";
+            arrow.GetComponent<Arrow>().attack = GetComponent<BaseCreature>().Attack;
+        }
+
+        public List<GameObject> arrows;
+
         public void OnMouseUp()
         {
+            if (GameManager.curHi != null && GameManager.curHi.arrow != null) GameManager.curHi.arrow.GetComponent<Arrow>().movingarrow = false;
+
             //static booleans screw up when you exit the game lol
             //if this card is not yours you can't highlight it silly
-            if (stillOnCard == false || GameManager.IsInputGathererActive) return; //Do call OnMouseDown if cursor has left the object
+            if (GameManager.IsInputGathererActive) return; //Do call OnMouseDown if cursor has left the object
             //Player clicked on this card as a target, not to activate its effect.
             if (FlipState == FlipState.FaceDown) return;
             //if (FlipState == FlipState.FaceDown) return;
 
-            if (highlighted && _outline.activeSelf == true)
+            //if player successfully attacks card
+
+
+            if (highlighted && _outline.activeSelf == true && stillOnCard)
             {
                 highlighted = false;
                 _outline.SetActive(false);
                 GameManager.curHi = null;
             }
-            else if (!highlighted)
+            else if (!highlighted && stillOnCard)
             {
                 _outline.SetActive(true);
                 highlighted = true;
                 GameManager.curHi = this;
             }
-            else if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase == Phase.Attack)
-                    GetComponent<BaseCreature>().TakeDamage(GameManager.curHi.GetComponent<BaseCreature>().Attack);
-
+            else if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase == Phase.Attack && GameManager.curHi.arrow != null)
+            {
+                //GetComponent<BaseCreature>().TakeDamage(GameManager.curHi.GetComponent<BaseCreature>().Attack);
+                //GameManager.curHi.arrow.GetComponent<Arrow>().enabled = false;
+                arrows.Add(GameManager.curHi.arrow);
+                GameManager.curHi.arrow.transform.parent = transform;
+            }
+                    
         }
 
         private bool IsCreature()

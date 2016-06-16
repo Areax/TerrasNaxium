@@ -31,7 +31,8 @@ namespace HarryPotterUnity.Game
         private int _playPieceBR = 600;*/
 
         public List<GameObject> PlayPieces;
-
+        int c;
+        private List<String> PPs = new List<string> { "TL", "TM", "TR", "BL", "BM", "BR" };
         public GameObject TL;
         public GameObject TM;
         public GameObject TR;
@@ -67,6 +68,7 @@ namespace HarryPotterUnity.Game
 
         private void Awake()
         {
+            c = 0;
             Instance = Resources.Load("AlbusDumbledore") as GameObject;
             _player = transform.GetComponentInParent<Player>();
             var col = gameObject.AddComponent<BoxCollider>();
@@ -101,7 +103,7 @@ namespace HarryPotterUnity.Game
         public void PiecetoList(GameObject ob, Vector3 area)
         {
             ob = createPiece(area);
-            ob.name = ob.ToString();
+            ob.name = PPs[c++];
             PlayPieces.Add(ob);
         }
 

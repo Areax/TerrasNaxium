@@ -160,6 +160,9 @@ namespace HarryPotterUnity.Game
             _player1.OppositePlayer = _player2;
             _player2.OppositePlayer = _player1;
 
+            _player1.name = "Player 1";
+            _player2.name = "Player 2";
+
             _player1.transform.localRotation = Quaternion.identity;
             _player2.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
 
@@ -351,6 +354,9 @@ namespace HarryPotterUnity.Game
         [PunRPC, UsedImplicitly]
         public void ExecuteSkipAction()
         {
+            
+
+            //if end turn and no persistence cards played, lose the left card
             if (_player1.CanUseActions())
             {
                 Log.Write("Player 1 skipped an action");

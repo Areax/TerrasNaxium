@@ -47,7 +47,7 @@ namespace HarryPotterUnity.Game
         {
             //if highlight is set to true, find the highlighted card and move the position
             //call add function
-            if (active == true && BaseCard.highlighted == true)
+            if (active == true && BaseCard.highlighted == true && GameManager.Phase == Phase.Placement)
             {
                 card = _player.Hand.FindHighlighted();
                 if(card != null)

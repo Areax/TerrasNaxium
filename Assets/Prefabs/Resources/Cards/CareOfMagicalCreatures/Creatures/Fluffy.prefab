@@ -240,8 +240,10 @@ MonoBehaviour:
   _tags: 1
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
+  noCylinder: 1
+  arrows: []
   _attack: 4
-  _health: 21
+  _health: 11
   _speed: 0
   _armor: 0
 --- !u!1001 &100100000

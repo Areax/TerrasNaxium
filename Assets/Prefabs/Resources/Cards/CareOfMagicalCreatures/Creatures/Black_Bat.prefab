@@ -225,8 +225,10 @@ MonoBehaviour:
   _tags: 0
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
+  noCylinder: 1
+  arrows: []
   _attack: 10
-  _health: 1
+  _health: 5
   _speed: 0
   _armor: 0
   _battlecryDamage: 2

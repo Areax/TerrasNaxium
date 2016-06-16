@@ -4311,7 +4311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enableDebugMode: 1
   _player1Deck:
-  - {fileID: 111346, guid: 02d99af35fca85045afef6ae30d84290, type: 2}
+  - {fileID: 129238, guid: e96666e2f24980c41bbed8b1766c12d8, type: 2}
   - {fileID: 106610, guid: 3ab626a181870ed4ba35d2a7d3792359, type: 2}
   - {fileID: 178742, guid: 3d9de3e0c3b64064997216583cd25354, type: 2}
   - {fileID: 179930, guid: 19453992a24f7694c944e8f505b4b98a, type: 2}

@@ -23,7 +23,7 @@ namespace HarryPotterUnity.Cards
         protected int _armor;
 
         private GameObject _uiCanvas;
-        private Text _healthLabel;
+        protected Text _healthLabel;
         protected Text _attackLabel;
         
         public int Attack { get { return _attack; } }
@@ -50,7 +50,6 @@ namespace HarryPotterUnity.Cards
             _uiCanvas.transform.localRotation = Player.IsLocalPlayer ? Quaternion.Euler(0f,0f,270f) : Quaternion.Euler(0f,0f,90f);
             _healthLabel = _uiCanvas.transform.FindChild("HealthLabel").gameObject.GetComponent<Text>();
             _attackLabel = _uiCanvas.transform.FindChild("AttackLabel").gameObject.GetComponent<Text>();
-
             _healthLabel.text = _health.ToString();
             _attackLabel.text = Attack.ToString();
 
@@ -58,7 +57,7 @@ namespace HarryPotterUnity.Cards
         }
         
         
-        public void TakeDamage(int amount)
+        public virtual void TakeDamage(int amount)
         {
             _health -= amount;
             _healthLabel.text = Mathf.Clamp(_health, 0, int.MaxValue).ToString();

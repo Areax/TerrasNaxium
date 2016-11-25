@@ -24,7 +24,6 @@ public class Arrow : MonoBehaviour
         {
             pos2 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane + 0.5f);
             pos2 = Camera.main.ScreenToWorldPoint(pos2);
-
         }
 
         if (pos2 != pos1)

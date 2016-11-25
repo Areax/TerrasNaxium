@@ -148,17 +148,17 @@ namespace HarryPotterUnity.Game
             }
 
             //Deck.DrawCard();
-            AddActions(2);
+            //AddActions(2);
 
             if (ActionsAvailable < 1)
             {
                 ActionsAvailable = 1;
             }
 
-            foreach (var creature in InPlay.Creatures.Cast<BaseCreature>())
+            /*foreach (var creature in InPlay.Creatures.Cast<BaseCreature>())
             {
                 OppositePlayer.TakeDamage(creature, creature.Attack);
-            }
+            }*/
         }
 
         private void EndTurn()
@@ -179,6 +179,8 @@ namespace HarryPotterUnity.Game
         }
 
         private bool nextTurn;
+
+
         //here are all skip sequences
         public void UseActions(int amount = 1)
         {

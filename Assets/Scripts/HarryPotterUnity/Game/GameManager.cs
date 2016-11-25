@@ -28,7 +28,8 @@ namespace HarryPotterUnity.Game
 
         public static PhotonView Network { get; set; }
 
-        public static Phase Phase { get; set; }
+        public static Phase Phase_localP { get; set; }
+        public static Phase Phase_opponentP { get; set; }
 
         public static bool DebugModeEnabled { get; set; }
 

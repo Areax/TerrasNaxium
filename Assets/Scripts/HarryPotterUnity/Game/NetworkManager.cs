@@ -26,17 +26,20 @@ namespace HarryPotterUnity.Game
         private static readonly TypedLobby _defaultLobby = new TypedLobby(LOBBY_VERSION, LobbyType.Default);
         private GameObject gameBackground;
 
+        private int isWaitingForOpponent;
+
         public void Awake()
         {
             
             Log.Write("Initialize Log");
-            
+            isWaitingForOpponent = -1;
             _menuManager = FindObjectOfType<MenuManager>();
             _allMenuScreens = FindObjectsOfType<BaseMenu>().ToList();
 
             GameManager.Network = photonView;
 
             PhotonNetwork.ConnectUsingSettings(LOBBY_VERSION);
+
         }
 
         [UsedImplicitly]
@@ -244,6 +247,7 @@ namespace HarryPotterUnity.Game
         {
             var player = pid == 0 ? _player1 : _player2;
             BaseCard card = GameManager.AllCards.Find(c => c.NetworkId == id);
+            card.Player.OppositePlayer.ClearHighlightComponent();
             Log.Write("Player {0} Plays a Card", player.NetworkId + 1);
             player.Discard.NetworkAdd(card);
 
@@ -352,24 +356,54 @@ namespace HarryPotterUnity.Game
         }
 
         [PunRPC, UsedImplicitly]
-        public void ExecuteSkipAction()
+        public void ExecuteSkipAction(byte pid)
         {
-            
+
+            var player = pid == 0 ? _player1 : _player2;
+
+            if (isWaitingForOpponent == -1 || pid == isWaitingForOpponent)
+            {
+                isWaitingForOpponent = pid;
+                Debug.Log("THIS IS THE PID: " + pid + " WAITING? " + isWaitingForOpponent);
+            }  
+            else
+            {
+                if (GameManager.Phase_opponentP == Phase.EndTurn) GameManager.Phase_opponentP = Phase.Placement;
+                else GameManager.Phase_opponentP++;
+
+                if (GameManager.Phase_localP == Phase.EndTurn) GameManager.Phase_localP = Phase.Placement;
+                else GameManager.Phase_localP++;
+
+                isWaitingForOpponent = -1;
+            }
+
+            if (GameManager.Phase_localP == Phase.Persistence)
+            {
+                var arrows = GameObject.FindGameObjectsWithTag("Arrow"); //kill all those dang cylinders :)
+                foreach (GameObject ob in arrows)
+                {
+                    var par_ob = ob.transform.parent;
+                    if (par_ob == null) return;
+                    par_ob.GetComponent<BaseCreature>().TakeDamage(ob.GetComponent<Arrow>().attack);
+                    ob.transform.parent.GetComponent<BaseCard>().noCylinder = true;
+                    Destroy(ob);
+                }
+            }
+
+            Debug.Log("" + player + "here's the phase: " + GameManager.Phase_localP);
+            Debug.Log("pid: " + pid + " here's their phase: " + GameManager.Phase_opponentP);
+
 
             //if end turn and no persistence cards played, lose the left card
             if (_player1.CanUseActions())
             {
                 Log.Write("Player 1 skipped an action");
-                _player1.UseActions();
+                //_player1.UseActions();
             }
             else if (_player2.CanUseActions())
             {
                 Log.Write("Player 2 skipped an action");
-                _player2.UseActions();
-            }
-            else
-            {
-                Log.Error("ExecuteSkipAction() failed to identify which player wants to skip their Action!");
+                //_player2.UseActions();
             }
         }
 

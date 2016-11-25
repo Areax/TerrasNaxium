@@ -30,6 +30,9 @@ namespace HarryPotterUnity.Game
         public override void Add(BaseCard card) 
         {
             if (card == null) return;
+            Debug.Log("sending " + card + " to the graveyard");
+            //does not work because it removes highlights on local server :(
+            card.CleanDiscard();
             GameManager.Network.RPC("ExecuteFieldToDiscard", PhotonTargets.All, _player.NetworkId, card.NetworkId);
             Cards.Add(card);
             card.Enable();

@@ -191,7 +191,7 @@ namespace HarryPotterUnity.Cards
 
         public void OnMouseDown()
         {
-            if (noCylinder && isHighlight() && GameManager.Phase == Phase.Attack && transform.parent.GetComponent<PlayPiece>() != null)
+            if (noCylinder && isHighlight() && GameManager.Phase_localP == Phase.Attack && transform.parent.GetComponent<PlayPiece>() != null)
             {
                 noCylinder = false;
                 CreateCylinder();
@@ -213,9 +213,23 @@ namespace HarryPotterUnity.Cards
 
         public List<GameObject> arrows;
 
+        public void CleanDiscard()
+        {
+            RemoveHighlight();
+            /*while(arrows.Count != 0)
+            {
+                Destroy(arrows[0]);
+            }*/
+            //unhighlight
+            //tell it that it's not highlighted anymore
+        }
+
         public void OnMouseUp()
         {
-            if (GameManager.curHi != null && GameManager.curHi.arrow != null) GameManager.curHi.arrow.GetComponent<Arrow>().movingarrow = false;
+            if (GameManager.curHi != null && GameManager.curHi.arrow != null)
+            {
+                GameManager.curHi.arrow.GetComponent<Arrow>().movingarrow = false;
+            }
 
             //static booleans screw up when you exit the game lol
             //if this card is not yours you can't highlight it silly
@@ -228,18 +242,14 @@ namespace HarryPotterUnity.Cards
 
 
             if (highlighted && _outline.activeSelf == true && stillOnCard)
-            {
-                highlighted = false;
-                _outline.SetActive(false);
-                GameManager.curHi = null;
-            }
-            else if (!highlighted && stillOnCard)
+                RemoveHighlight();
+            else if (!highlighted && stillOnCard && Player.IsLocalPlayer) //make sure it's not the opponent's card? lol
             {
                 _outline.SetActive(true);
                 highlighted = true;
                 GameManager.curHi = this;
             }
-            else if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase == Phase.Attack && GameManager.curHi.arrow != null)
+            else if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase_localP == Phase.Attack && GameManager.curHi.arrow != null)
             {
                 //GetComponent<BaseCreature>().TakeDamage(GameManager.curHi.GetComponent<BaseCreature>().Attack);
                 //GameManager.curHi.arrow.GetComponent<Arrow>().enabled = false;
@@ -383,7 +393,11 @@ namespace HarryPotterUnity.Cards
 
         public void RemoveHighlight()
         {
-            if (_highlight) _highlight.SetActive(false);
+            //if (_highlight) _highlight.SetActive(false);
+            Debug.Log("removing highlights");
+            highlighted = false;
+            _outline.SetActive(false);
+            GameManager.curHi = null;
         }
 
     }

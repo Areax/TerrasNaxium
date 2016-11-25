@@ -14,7 +14,6 @@ namespace HarryPotterUnity.UI.Menu
     {
         private Player _localPlayer;
         private Player _remotePlayer;
-        
         public Player LocalPlayer
         {
             private get { return _localPlayer; }
@@ -54,6 +53,7 @@ namespace HarryPotterUnity.UI.Menu
             }
         }
 
+
         private void ShowGameOverMessage(Player loser)
         {
             //TODO: Show game over message
@@ -92,10 +92,15 @@ namespace HarryPotterUnity.UI.Menu
         private Image _mainMenuBackground;
 
         private Image _gameBackground;
+        private Phase nextPhase;
+        private bool waitingForOpponent;
 
         protected override void Awake()
         {
             base.Awake();
+
+            nextPhase = Phase.Preparation;
+            waitingForOpponent = false;
 
             var allText = FindObjectsOfType<Text>();
 
@@ -128,12 +133,18 @@ namespace HarryPotterUnity.UI.Menu
         private void Start()
         {
             //_skipActionButton.interactable = false;
-            GameManager.Phase = Phase.Placement;
+            GameManager.Phase_localP = Phase.Placement;
+            GameManager.Phase_opponentP = Phase.Placement;
         }
 
         protected override void Update()
         {
             base.Update();
+
+            if ((((int)GameManager.Phase_localP) + 1) % 6 == (int)nextPhase % 6)
+                curPhase.text = GameManager.Phase_localP.ToString();
+            else curPhase.text = "Waiting For Opponent...";
+
 
             if (LocalPlayer != null)
             {
@@ -150,9 +161,13 @@ namespace HarryPotterUnity.UI.Menu
             }
         }
 
+        
         [UsedImplicitly]
         public void SkipAction()
         {
+            //need to send curPhase
+            //LocalPlayer.
+
             //var player = LocalPlayer.CanUseActions() ? LocalPlayer : RemotePlayer;
 
             /*if (player.ActionsAvailable == 1)
@@ -161,24 +176,15 @@ namespace HarryPotterUnity.UI.Menu
             }*/
             //if opponent's board is empty, you win!
             //LOL This only will wokr if we go through the RPC because the local player has no idea what the other player has
-            if (_remotePlayer.PlayField.NoCreatures()) Debug.Log("LOCAL PLAYER WINS!");
-            if (GameManager.Phase == Phase.EndTurn) GameManager.Phase = Phase.Placement;
-            else GameManager.Phase++;
-            if (GameManager.Phase == Phase.Persistence)
-            {
-                var arrows = GameObject.FindGameObjectsWithTag("Arrow"); //kill all those dang cylinders :)
-                foreach(GameObject ob in arrows)
-                {
-                    var par_ob = ob.transform.parent;
-                    par_ob.GetComponent<BaseCreature>().TakeDamage(ob.GetComponent<Arrow>().attack);
-                    Destroy(ob);
-                }
-            }
-            
-            curPhase.text = GameManager.Phase.ToString();
+
             //_localPlayer.UseActions();
             //_skipActionButton.enabled = false;
-            GameManager.Network.RPC("ExecuteSkipAction", PhotonTargets.All);
+
+            if (GameManager.Phase_localP == Phase.Persistence) nextPhase = Phase.Placement;
+            else nextPhase = GameManager.Phase_localP + 2;
+
+            if (_remotePlayer.PlayField.NoCreatures()) Debug.Log("LOCAL PLAYER WINS!");
+            GameManager.Network.RPC("ExecuteSkipAction", PhotonTargets.All, _localPlayer.NetworkId);
         }
 
         public override void OnShowMenu()

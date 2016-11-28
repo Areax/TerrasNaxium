@@ -42,8 +42,9 @@ namespace HarryPotterUnity.Cards
         //will return to where the card is put
         public Transform parentToReturnTo = null;
         public Transform placeholderParent = null;
-        GameObject placeholder = null;
+        //GameObject placeholder = null;
         public static bool moveable = true;
+        public bool isDefending;
 
 
         private List<IDeckGenerationRequirement> _deckGenerationRequirements;
@@ -60,7 +61,7 @@ namespace HarryPotterUnity.Cards
         public string CardName { get { return string.Format("{0}: {1}", Type, transform.name.Replace("(Clone)", "")); } }
         public byte NetworkId { get; set; }
 
-        private InputGatherer _inputGatherer;
+        //private InputGatherer _inputGatherer;
         private int _fromHandActionInputRequired;
         private int _inPlayActionInputRequired;
 
@@ -69,6 +70,7 @@ namespace HarryPotterUnity.Cards
         private GameObject _cardFace;
         private GameObject _outline;
         private GameObject _highlight;
+        private GameObject _dlight;
         private GameObject arrow;
 
         private List<ICardPlayRequirement> PlayRequirements { get; set; }
@@ -121,6 +123,8 @@ namespace HarryPotterUnity.Cards
 
             AddOutlineComponent();
             AddHighlightComponent();
+            AddDlightComponent();
+            isDefending = false;
         }
 
         private void AddOutlineComponent()
@@ -132,6 +136,17 @@ namespace HarryPotterUnity.Cards
             _outline.transform.parent = transform;
 
             _outline.SetActive(false);
+        }
+
+        private void AddDlightComponent()
+        {
+            var tmp = Resources.Load("Outline");
+
+            _dlight = (GameObject)Instantiate(tmp);
+            _dlight.transform.position = transform.position - Vector3.back;
+            _dlight.transform.parent = transform;
+
+            _dlight.SetActive(false);
         }
 
         private void AddHighlightComponent()
@@ -154,7 +169,7 @@ namespace HarryPotterUnity.Cards
 
             if (inputRequirement != null)
             {
-                _inputGatherer = GetComponent<InputGatherer>();
+                //_inputGatherer = GetComponent<InputGatherer>();
                 _fromHandActionInputRequired = inputRequirement.FromHandActionInputRequired;
                 _inPlayActionInputRequired = inputRequirement.InPlayActionInputRequired;
             }
@@ -191,7 +206,7 @@ namespace HarryPotterUnity.Cards
 
         public void OnMouseDown()
         {
-            if (noCylinder && isHighlight() && GameManager.Phase_localP == Phase.Attack && transform.parent.GetComponent<PlayPiece>() != null)
+            if (noCylinder && isHighlight() && GameManager.Phase_localP == Phase.Attack && transform.parent.GetComponent<PlayPiece>() != null && !isDefending)
             {
                 noCylinder = false;
                 CreateCylinder();
@@ -224,11 +239,31 @@ namespace HarryPotterUnity.Cards
             //tell it that it's not highlighted anymore
         }
 
+        public bool isFrontRow()
+        {
+            if (transform.parent.name == "TL" || transform.parent.name == "TR" || transform.parent.name == "TM")
+                return true;
+            return false;
+        }
+
         public void OnMouseUp()
         {
             if (GameManager.curHi != null && GameManager.curHi.arrow != null)
             {
                 GameManager.curHi.arrow.GetComponent<Arrow>().movingarrow = false;
+                //Debug.Log(highlighted + " " + GameManager.curHi.Player + " " + Player);
+                // two things here: either actually ADD raycasts or change the attacking to click click 
+                
+                if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase_localP == Phase.Attack)
+                {
+                    Debug.Log("still has a defense? " + Player.PlayField.stillHasDefense());
+                    if (GameManager.curHi.arrow.transform.parent != null)
+                        GameManager.curHi.arrow.transform.parent.GetComponent<BaseCard>()._dlight.SetActive(false);
+                    arrows.Add(GameManager.curHi.arrow);
+                    GameManager.curHi.arrow.transform.parent = transform;
+                    _dlight.SetActive(true);
+                }
+
             }
 
             //static booleans screw up when you exit the game lol
@@ -240,22 +275,36 @@ namespace HarryPotterUnity.Cards
 
             //if player successfully attacks card
 
-
+            // if highlighted already
             if (highlighted && _outline.activeSelf == true && stillOnCard)
                 RemoveHighlight();
-            else if (!highlighted && stillOnCard && Player.IsLocalPlayer) //make sure it's not the opponent's card? lol
+            else if(stillOnCard && Player.IsLocalPlayer && GameManager.Phase_localP == Phase.Defense && _highlight.activeSelf == false && isFrontRow())
+            {
+                // highlight card to show its defending
+                // make sure it's only front row :)
+                // 
+                //if(transform.parent == )
+                _highlight.SetActive(true);
+                isDefending = true;
+            }
+            else if(stillOnCard && Player.IsLocalPlayer && GameManager.Phase_localP == Phase.Defense && _highlight.activeSelf == true)
+            {
+                _highlight.SetActive(false);
+                isDefending = false;
+            }
+            else if (!highlighted && stillOnCard && Player.IsLocalPlayer) // if not highlighted, highlight!
             {
                 _outline.SetActive(true);
                 highlighted = true;
                 GameManager.curHi = this;
             }
-            else if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase_localP == Phase.Attack && GameManager.curHi.arrow != null)
+           /* else if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase_localP == Phase.Attack && GameManager.curHi.arrow != null)
             {
                 //GetComponent<BaseCreature>().TakeDamage(GameManager.curHi.GetComponent<BaseCreature>().Attack);
                 //GameManager.curHi.arrow.GetComponent<Arrow>().enabled = false;
                 arrows.Add(GameManager.curHi.arrow);
                 GameManager.curHi.arrow.transform.parent = transform;
-            }
+            }*/
                     
         }
 
@@ -394,9 +443,11 @@ namespace HarryPotterUnity.Cards
         public void RemoveHighlight()
         {
             //if (_highlight) _highlight.SetActive(false);
-            Debug.Log("removing highlights");
+            //Debug.Log("removing highlights for player " + Player + " name me " + transform.parent.name);
             highlighted = false;
             _outline.SetActive(false);
+            _dlight.SetActive(false);
+            _highlight.SetActive(false);
             GameManager.curHi = null;
         }
 

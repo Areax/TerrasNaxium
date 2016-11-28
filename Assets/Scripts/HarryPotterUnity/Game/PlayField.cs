@@ -57,6 +57,30 @@ namespace HarryPotterUnity.Game
             return null;
         }
 
+        public bool stillHasDefense()
+        {
+            //see if cards are defending
+            //if cards are defending, return true
+            //if attack > health though, return false
+            Debug.Log("still defending?");
+            foreach (GameObject ob in PlayPieces)
+            {
+                BaseCard card = ob.GetComponent<PlayPiece>().card;
+                if(card != null && card.isDefending == true)
+                {
+                    int health = card.GetComponent<BaseCreature>().Health;
+                    for (int i = 0; i < card.transform.childCount; i++)
+                    {
+                        health -= card.transform.GetChild(i).GetComponent<Arrow>().attack;
+                    }
+                    if (health > 0) return true;
+                }
+            }
+            Debug.Log("haha nope!");
+            return false;
+        }
+
+        // is this needed? also breaks when there is no card
         public BaseCard findHighlighted()
         {
             foreach(GameObject ob in PlayPieces)
@@ -64,6 +88,20 @@ namespace HarryPotterUnity.Game
                 if (ob.GetComponent<PlayPiece>().card.isHighlight()) return ob.GetComponent<PlayPiece>().card;
             }
             return null;
+        }
+
+        public void RemoveAllHighlighted()
+        {
+            //this is not removing the highlight :(
+            foreach (GameObject ob in PlayPieces)
+            {
+                //Debug.Log(ob.GetComponent<PlayPiece>().card);
+                if (ob.GetComponent<PlayPiece>().card != null)
+                {
+                    ob.GetComponent<PlayPiece>().card.RemoveHighlight();
+                }
+            }
+                    
         }
 
         private void Awake()
@@ -158,7 +196,7 @@ namespace HarryPotterUnity.Game
             foreach(GameObject o in PlayPieces)
             {
                 if (o.GetComponent<PlayPiece>().HaveCreature()) return false;
-                Debug.Log("this isn't a card");
+                //Debug.Log("this isn't a card");
             }
             return true;
         }

@@ -96,7 +96,7 @@ namespace HarryPotterUnity.Game
         public void InitDeck(List<LessonTypes> selectedLessons)
         {
             prebuiltCards = GameManager.GetPlayerTestDeck(NetworkId);
-            List<BaseCard> cards;
+            //List<BaseCard> cards;
 
 
             if (GameManager.DebugModeEnabled)
@@ -108,7 +108,7 @@ namespace HarryPotterUnity.Game
             }
             else
             {
-                cards = DeckGenerator.GenerateDeck(selectedLessons);
+                //cards = DeckGenerator.GenerateDeck(selectedLessons);
 
             }
 
@@ -264,10 +264,8 @@ namespace HarryPotterUnity.Game
                 card.RemoveHighlight();
             }
 
-            foreach (var card in InPlay.Cards)
-            {
-                card.RemoveHighlight();
-            }
+            //
+            PlayField.RemoveAllHighlighted();
 
             foreach (var card in Discard.Cards)
             {

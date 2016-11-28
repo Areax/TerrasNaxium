@@ -98,7 +98,7 @@ namespace HarryPotterUnity.Game
         {
             if (card is BaseCreature)
                 Cards.Remove(card);
-            else if (true) ;//this case card is spell and is removed at the end of the turn?)
+            //else if (true) ;//this case card is spell and is removed at the end of the turn?)
         }
 
         /// <summary>

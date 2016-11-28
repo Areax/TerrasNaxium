@@ -358,13 +358,15 @@ namespace HarryPotterUnity.Game
         [PunRPC, UsedImplicitly]
         public void ExecuteSkipAction(byte pid)
         {
+            //two things lol: server side attacking AND
+            //server side highlighting. will need to change that.
 
             var player = pid == 0 ? _player1 : _player2;
+            //actually need to execute a highlight function so I know the opponent's highlighted cards
 
             if (isWaitingForOpponent == -1 || pid == isWaitingForOpponent)
             {
                 isWaitingForOpponent = pid;
-                Debug.Log("THIS IS THE PID: " + pid + " WAITING? " + isWaitingForOpponent);
             }  
             else
             {
@@ -388,13 +390,15 @@ namespace HarryPotterUnity.Game
                     ob.transform.parent.GetComponent<BaseCard>().noCylinder = true;
                     Destroy(ob);
                 }
+                // attacking and defending cards resolve, no need for highlighting
+                _player1.ClearHighlightComponent();
+                _player2.ClearHighlightComponent();
+                //clear outline too
             }
 
-            Debug.Log("" + player + "here's the phase: " + GameManager.Phase_localP);
-            Debug.Log("pid: " + pid + " here's their phase: " + GameManager.Phase_opponentP);
 
 
-            //if end turn and no persistence cards played, lose the left card
+            /*if end turn and no persistence cards played, lose the left card
             if (_player1.CanUseActions())
             {
                 Log.Write("Player 1 skipped an action");
@@ -404,7 +408,7 @@ namespace HarryPotterUnity.Game
             {
                 Log.Write("Player 2 skipped an action");
                 //_player2.UseActions();
-            }
+            }*/
         }
 
         private void OnApplicationQuit()

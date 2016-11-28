@@ -93,14 +93,14 @@ namespace HarryPotterUnity.UI.Menu
 
         private Image _gameBackground;
         private Phase nextPhase;
-        private bool waitingForOpponent;
+        //private bool waitingForOpponent;
 
         protected override void Awake()
         {
             base.Awake();
 
             nextPhase = Phase.Preparation;
-            waitingForOpponent = false;
+            //waitingForOpponent = false;
 
             var allText = FindObjectsOfType<Text>();
 

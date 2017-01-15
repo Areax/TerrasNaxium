@@ -1,4 +1,4 @@
-[Etra] (TerrasNaxium)
+Etra (TerrasNaxium)
 ========================
 
 A card game with no random effects sprinkled with simultaneous turns so that no person gets the advantage and the game is 100% skill.

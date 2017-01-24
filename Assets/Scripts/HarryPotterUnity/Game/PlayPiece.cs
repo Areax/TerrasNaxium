@@ -16,6 +16,9 @@ namespace HarryPotterUnity.Game
 
         public GameObject image;
         
+
+        // weird case when the opponent doesn't actually have a 'card' but the 'child' is a real thing.
+        // WE have the code as the card AND the child, but the opponent only has PlayPiece recognizing a child
         public BaseCard card;
         public BaseCard child;
 
@@ -53,7 +56,7 @@ namespace HarryPotterUnity.Game
                 if(card != null)
                 {
                     Add(card);
-                    GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, _player.NetworkId, card.NetworkId, _networkId);
+                    GameManager.Network.RPC("ExecuteLoadPlayedCard", PhotonTargets.All, _player.NetworkId, card.NetworkId, _networkId);
                 }
                 
             }

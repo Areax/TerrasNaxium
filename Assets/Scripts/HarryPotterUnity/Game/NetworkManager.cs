@@ -253,6 +253,18 @@ namespace HarryPotterUnity.Game
 
         }
 
+        // 2 dimensional array of MAX 12 cards being added to the field.
+        byte[,] cardsOnField = new byte[12,3];
+        int cardNumber = 0;
+
+        [PunRPC, UsedImplicitly]
+        public void ExecuteLoadPlayedCard(byte pid, byte id, byte fieldId)
+        {
+            cardsOnField[cardNumber,0] = pid;
+            cardsOnField[cardNumber,1] = id;
+            cardsOnField[cardNumber++,2] = fieldId;
+        }
+
         [PunRPC, UsedImplicitly]
         public void ExecutePlayCardToField(byte pid, byte id, byte fieldId)
         {
@@ -261,6 +273,28 @@ namespace HarryPotterUnity.Game
             Log.Write("Player {0} Plays a Card", player.NetworkId + 1);
             PlayPiece piece = player.PlayField.findId(fieldId);
             player.PlayField.HandtoField(card,piece);
+
+        }
+
+        //a false name because it's not really Dlights we're targeting, it's the _highlight
+        byte[,] DlightedCards = new byte[12, 2];
+        int dlightNumber = 0;
+
+        [PunRPC, UsedImplicitly]
+        public void ExecuteAddDlight(byte pid, byte id)
+        {
+            DlightedCards[dlightNumber, 0] = pid;
+            DlightedCards[dlightNumber++, 1] = id;
+
+        }
+
+        [PunRPC, UsedImplicitly]
+        public void ExecuteDlight(byte pid, byte id)
+        {
+            var player = pid == 0 ? _player1 : _player2;
+            BaseCard card = GameManager.AllCards.Find(c => c.NetworkId == id);
+            Log.Write("Defending!", player.NetworkId + 1);
+            card._highlight.SetActive(true);
 
         }
 
@@ -367,7 +401,7 @@ namespace HarryPotterUnity.Game
             if (isWaitingForOpponent == -1 || pid == isWaitingForOpponent)
             {
                 isWaitingForOpponent = pid;
-            }  
+            }
             else
             {
                 if (GameManager.Phase_opponentP == Phase.EndTurn) GameManager.Phase_opponentP = Phase.Placement;
@@ -393,8 +427,38 @@ namespace HarryPotterUnity.Game
                 // attacking and defending cards resolve, no need for highlighting
                 _player1.ClearHighlightComponent();
                 _player2.ClearHighlightComponent();
-                //clear outline too
             }
+
+            // play cards in sync during the Prep phase
+            else if (GameManager.Phase_localP == Phase.Preparation)
+            {
+
+                for (int i = 0; i < cardNumber; i++)
+                {
+                    GameManager.Network.RPC("ExecutePlayCardToField", PhotonTargets.All, cardsOnField[i, 0], cardsOnField[i, 1], cardsOnField[i, 2]);
+                    Debug.Log("phase is now prep " + i);
+                }
+
+                cardNumber = 0;
+            }
+            else if (GameManager.Phase_localP == Phase.Attack)
+            {
+                player.PlayField.AddDlighted();
+                for (int i = 0; i < dlightNumber; i++)
+                {
+                    GameManager.Network.RPC("ExecuteDlight", PhotonTargets.All, DlightedCards[i, 0], DlightedCards[i, 1]);
+                    Debug.Log("phase is now Attack " + i);
+                }
+
+                dlightNumber = 0;
+            }
+            else if (GameManager.Phase_localP == Phase.Defense)
+            {
+
+                player.PlayField.AddDlighted();
+            }
+
+
 
 
 

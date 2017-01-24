@@ -90,6 +90,16 @@ namespace HarryPotterUnity.Game
             return null;
         }
 
+        public bool hasDefending()
+        {
+            foreach (GameObject ob in PlayPieces)
+            {
+                
+                if (ob.GetComponent<PlayPiece>().child != null && ob.GetComponent<PlayPiece>().child.isDlighted()) return true;
+            }
+            return false;
+        }
+
         public void RemoveAllHighlighted()
         {
             //this is not removing the highlight :(
@@ -103,6 +113,21 @@ namespace HarryPotterUnity.Game
             }
                     
         }
+
+        public void AddDlighted()
+        {
+            //this is not removing the highlight :(
+            foreach (GameObject ob in PlayPieces)
+            {
+                //Debug.Log(ob.GetComponent<PlayPiece>().card);
+                if (ob.GetComponent<PlayPiece>().card != null && ob.GetComponent<PlayPiece>().card.isDlighted())
+                {
+                    GameManager.Network.RPC("ExecuteAddDlight", PhotonTargets.All, _player.NetworkId, ob.GetComponent<PlayPiece>().card.NetworkId);
+                }
+            }
+
+        }
+
 
         private void Awake()
         {

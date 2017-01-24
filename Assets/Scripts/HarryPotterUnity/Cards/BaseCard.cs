@@ -68,10 +68,13 @@ namespace HarryPotterUnity.Cards
         private static readonly Vector2 _colliderSize = new Vector2(50f, 70f);
 
         private GameObject _cardFace;
+        // the entire whitening of the card showing which card is currently highlighted
         private GameObject _outline;
-        private GameObject _highlight;
-        private GameObject _dlight;
-        private GameObject arrow;
+        // the yellow indicating the defending card
+        public GameObject _highlight;
+        // the white light indicating the card that is being attacked
+        public GameObject _dlight;
+        public GameObject arrow;
 
         private List<ICardPlayRequirement> PlayRequirements { get; set; }
 
@@ -138,6 +141,7 @@ namespace HarryPotterUnity.Cards
             _outline.SetActive(false);
         }
 
+        // defending light?
         private void AddDlightComponent()
         {
             var tmp = Resources.Load("Outline");
@@ -199,9 +203,16 @@ namespace HarryPotterUnity.Cards
             stillOnCard = false;
         }
 
+        // the total whitnenss
         public bool isHighlight()
         {
             return _outline.activeSelf ? true : false;
+        }
+
+        // the yellow background
+        public bool isDlighted()
+        {
+            return _highlight.activeSelf ? true : false;
         }
 
         public void OnMouseDown()
@@ -246,6 +257,22 @@ namespace HarryPotterUnity.Cards
             return false;
         }
 
+        public bool canAttackHighlightedCard()
+        {
+            if (Player.PlayField.hasDefending())
+            {
+                Debug.Log("there are defending cards");
+                if (isDlighted())
+                {
+                    Debug.Log("I am highlighted! " + Player.NetworkId);
+                    return true;
+                }
+                else return false;
+            }
+            else return true;
+
+        }
+
         public void OnMouseUp()
         {
             if (GameManager.curHi != null && GameManager.curHi.arrow != null)
@@ -254,9 +281,11 @@ namespace HarryPotterUnity.Cards
                 //Debug.Log(highlighted + " " + GameManager.curHi.Player + " " + Player);
                 // two things here: either actually ADD raycasts or change the attacking to click click 
                 
-                if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase_localP == Phase.Attack)
+
+                if (highlighted && GameManager.curHi.Player != Player && IsCreature() && GameManager.Phase_localP == Phase.Attack
+                        && canAttackHighlightedCard())
                 {
-                    Debug.Log("still has a defense? " + Player.PlayField.stillHasDefense());
+                    Debug.Log("i attack you!");
                     if (GameManager.curHi.arrow.transform.parent != null)
                         GameManager.curHi.arrow.transform.parent.GetComponent<BaseCard>()._dlight.SetActive(false);
                     arrows.Add(GameManager.curHi.arrow);
@@ -277,7 +306,7 @@ namespace HarryPotterUnity.Cards
 
             // if highlighted already
             if (highlighted && _outline.activeSelf == true && stillOnCard)
-                RemoveHighlight();
+                Removehighlighted();
             else if(stillOnCard && Player.IsLocalPlayer && GameManager.Phase_localP == Phase.Defense && _highlight.activeSelf == false && isFrontRow())
             {
                 // highlight card to show its defending
@@ -448,6 +477,16 @@ namespace HarryPotterUnity.Cards
             _outline.SetActive(false);
             _dlight.SetActive(false);
             _highlight.SetActive(false);
+            GameManager.curHi = null;
+        }
+
+        public void Removehighlighted()
+        {
+            //if (_highlight) _highlight.SetActive(false);
+            //Debug.Log("removing highlights for player " + Player + " name me " + transform.parent.name);
+            highlighted = false;
+            _outline.SetActive(false);
+            _dlight.SetActive(false);
             GameManager.curHi = null;
         }
 

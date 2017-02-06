@@ -238,5 +238,21 @@ namespace HarryPotterUnity.Game
             //remove all cards from the field??
             throw new NotImplementedException();
         }
+
+        // reset all highlights, destroy all cylinders, make nocylinders true for all, 
+        public void Post_Attack_Phase()
+        {
+           
+
+            foreach (GameObject o in PlayPieces)
+            {
+
+                if (o.GetComponent<PlayPiece>().card != null)
+                {
+                    o.GetComponent<PlayPiece>().card.RemoveHighlight();
+                    o.GetComponent<PlayPiece>().card.Reset_Attack();
+                }
+            }
+        }
     }
 }

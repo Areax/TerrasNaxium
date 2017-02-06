@@ -147,7 +147,7 @@ namespace HarryPotterUnity.Cards
             var tmp = Resources.Load("Outline");
 
             _dlight = (GameObject)Instantiate(tmp);
-            _dlight.transform.position = transform.position - Vector3.back;
+            _dlight.transform.position = transform.position - Vector3.back * 0.2f;
             _dlight.transform.parent = transform;
 
             _dlight.SetActive(false);
@@ -158,7 +158,7 @@ namespace HarryPotterUnity.Cards
             var tmp = Resources.Load("Highlight");
 
             _highlight = (GameObject)Instantiate(tmp);
-            _highlight.transform.position = transform.position + Vector3.back * 0.2f;
+            _highlight.transform.position = transform.position - Vector3.back;
             _highlight.transform.parent = transform;
 
             _highlight.SetActive(false);
@@ -235,6 +235,7 @@ namespace HarryPotterUnity.Cards
             arrow.transform.localScale = new Vector3(.005f, 1f, .005f);
             arrow.tag = "Arrow";
             arrow.GetComponent<Arrow>().attack = GetComponent<BaseCreature>().Attack;
+            arrow.GetComponent<Arrow>().origin = this;
         }
 
         public List<GameObject> arrows;
@@ -469,6 +470,12 @@ namespace HarryPotterUnity.Cards
             else Log.Error("Highlight component has not yet been added.");
         }
 
+
+        public void Reset_Attack()
+        {
+            noCylinder = true;
+        }
+
         public void RemoveHighlight()
         {
             //if (_highlight) _highlight.SetActive(false);
@@ -480,6 +487,7 @@ namespace HarryPotterUnity.Cards
             GameManager.curHi = null;
         }
 
+        //doesn't remove the defense light, aka _highlight
         public void Removehighlighted()
         {
             //if (_highlight) _highlight.SetActive(false);

@@ -81,7 +81,7 @@ namespace HarryPotterUnity.Game
         public void Awake()
         {
             nextTurn = true;
-            ActionsAvailable = 2;
+            ActionsAvailable = 3;
 
             Hand = transform.GetComponentInChildren<Hand>();
             //Deck = transform.GetComponentInChildren<Deck>();

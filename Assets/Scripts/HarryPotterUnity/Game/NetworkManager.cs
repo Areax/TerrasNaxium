@@ -396,6 +396,7 @@ namespace HarryPotterUnity.Game
             //server side highlighting. will need to change that.
 
             var player = pid == 0 ? _player1 : _player2;
+            var opponent = pid == 0 ? _player2 : _player1;
             //actually need to execute a highlight function so I know the opponent's highlighted cards
 
             if (isWaitingForOpponent == -1 || pid == isWaitingForOpponent)
@@ -419,14 +420,52 @@ namespace HarryPotterUnity.Game
                 foreach (GameObject ob in arrows)
                 {
                     var par_ob = ob.transform.parent;
-                    if (par_ob == null) return;
+                    if (par_ob == null)
+                    {
+                        Destroy(ob);
+                        return;
+                    }
+                    if (par_ob.GetComponent<BaseCreature>().isDefending)
+                        ob.GetComponent<Arrow>().origin.GetComponent<BaseCreature>().TakeDamage(par_ob.GetComponent<BaseCreature>().Attack);
                     par_ob.GetComponent<BaseCreature>().TakeDamage(ob.GetComponent<Arrow>().attack);
-                    ob.transform.parent.GetComponent<BaseCard>().noCylinder = true;
+
+
+
+                    //find the place the card was (ie TL, TM, etc), go to opponent' find the place, find the card, attack it!
+                    string p_name = par_ob.GetComponent<BaseCard>().transform.parent.name;
+                    string o_name = ob.GetComponent<Arrow>().origin.transform.parent.name;
+
+                    // this may not work...
+                    foreach (GameObject o in opponent.PlayField.PlayPieces)
+                    {
+                        if (o.name == p_name)
+                        {
+                            o.GetComponent<PlayPiece>().card.GetComponent<BaseCreature>().TakeDamage(ob.GetComponent<Arrow>().attack);
+                            if(o.GetComponent<PlayPiece>().card.GetComponent<BaseCreature>().isDefending)
+                            {
+                                foreach (GameObject j in opponent.OppositePlayer.PlayField.PlayPieces)
+                                    if (j.name == o_name)
+                                        j.GetComponent<PlayPiece>().card.GetComponent<BaseCreature>().TakeDamage(par_ob.GetComponent<BaseCreature>().Attack);
+                            }
+                            break;
+                        }
+                    }
+
+
+
+
+
+                    // ob.transform.parent.GetComponent<BaseCard>().noCylinder = true;
                     Destroy(ob);
                 }
                 // attacking and defending cards resolve, no need for highlighting
                 _player1.ClearHighlightComponent();
                 _player2.ClearHighlightComponent();
+
+                _player1.PlayField.Post_Attack_Phase();
+                _player1.OppositePlayer.PlayField.Post_Attack_Phase();
+                _player2.OppositePlayer.PlayField.Post_Attack_Phase();
+                _player2.PlayField.Post_Attack_Phase();
             }
 
             // play cards in sync during the Prep phase

@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     float objectHeight = 2.0f; // 2.0f for a cylinder, 1.0f for a cube
     public bool movingarrow = false;
     public int attack = 0;
+    public BaseCard origin;
 
     void Update()
     {

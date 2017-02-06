@@ -53,10 +53,9 @@ namespace HarryPotterUnity.Game
             if (active == true && BaseCard.highlighted == true && GameManager.Phase_localP == Phase.Placement)
             {
                 card = _player.Hand.FindHighlighted();
-                if(card != null)
+                if(card != null && card.Player.UseAction())
                 {
                     Add(card);
-                    //card.Player.PlayCard();
                     GameManager.Network.RPC("ExecuteLoadPlayedCard", PhotonTargets.All, _player.NetworkId, card.NetworkId, _networkId);
                 }
                 

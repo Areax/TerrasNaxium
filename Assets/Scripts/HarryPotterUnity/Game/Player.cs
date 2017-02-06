@@ -51,7 +51,7 @@ namespace HarryPotterUnity.Game
         public HashSet<Type> TypeImmunity { get; set; }
 
         // Actions Available will now be cards available to play lol
-        public int ActionsAvailable { get; private set; }
+        public int ActionsAvailable { get; set; }
 
         public bool IsLocalPlayer { get; set; }
         public byte NetworkId { get; set; }
@@ -184,6 +184,23 @@ namespace HarryPotterUnity.Game
 
 
         //here are all skip sequences
+
+        public void ResetActions()
+        {
+            ActionsAvailable = 2;
+        }
+
+
+        public bool UseAction()
+        {
+            if(ActionsAvailable > 0)
+            {
+                ActionsAvailable--;
+                return true;
+            }
+            return false;
+        }
+
         public void UseActions(int amount = 1)
         {
             nextTurn = false;

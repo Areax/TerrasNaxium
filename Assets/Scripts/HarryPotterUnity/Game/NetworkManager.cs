@@ -457,6 +457,11 @@ namespace HarryPotterUnity.Game
 
                 player.PlayField.AddDlighted();
             }
+            else if(GameManager.Phase_localP == Phase.Placement)
+            {
+                _player1.ResetActions();
+                _player2.ResetActions();
+            }
 
 
 

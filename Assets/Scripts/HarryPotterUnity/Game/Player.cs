@@ -50,11 +50,13 @@ namespace HarryPotterUnity.Game
 
         public HashSet<Type> TypeImmunity { get; set; }
 
+        // Actions Available will now be cards available to play lol
         public int ActionsAvailable { get; private set; }
 
         public bool IsLocalPlayer { get; set; }
         public byte NetworkId { get; set; }
-        
+
+
         public delegate void TurnEvents();
         public delegate void CardPlayedEvent(BaseCard card, List<BaseCard> targets = null);
         public delegate void DamageTakenEvent(BaseCard source, int amount);
@@ -79,7 +81,7 @@ namespace HarryPotterUnity.Game
         public void Awake()
         {
             nextTurn = true;
-            ActionsAvailable = 0;
+            ActionsAvailable = 2;
 
             Hand = transform.GetComponentInChildren<Hand>();
             //Deck = transform.GetComponentInChildren<Deck>();
@@ -150,12 +152,12 @@ namespace HarryPotterUnity.Game
             //Deck.DrawCard();
             //AddActions(2);
 
-            if (ActionsAvailable < 1)
+            /* if (ActionsAvailable < 1)
             {
                 ActionsAvailable = 1;
             }
 
-            /*foreach (var creature in InPlay.Creatures.Cast<BaseCreature>())
+            foreach (var creature in InPlay.Creatures.Cast<BaseCreature>())
             {
                 OppositePlayer.TakeDamage(creature, creature.Attack);
             }*/
@@ -167,7 +169,7 @@ namespace HarryPotterUnity.Game
             {
                 OnTurnEnd();
             }
-            ActionsAvailable = 0;
+            // ActionsAvailable = 0;
 
             foreach (var card in InPlay.Cards.Cast<IPersistentCard>())
             {
